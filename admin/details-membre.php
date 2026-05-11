@@ -1,0 +1,402 @@
+<?php
+session_start();
+if (!isset($_SESSION['auth_user'])) {
+    $_SESSION['message'] = "Connectez-vous d'abord !";
+    $_SESSION["msg_type"] = "warning";
+    header("Location: ../login.php");
+    exit(0);
+}
+include('conf/dbcon.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>AISOE - Membre Details</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/plugins/feather/feather.css">
+
+    <link rel="stylesheet" href="assets/plugins/icons/flags/flags.css">
+
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <div class="header">
+
+            <div class="header-left">
+                <a href="index.php" class="logo">
+                    <img src="assets/img/logo.png" alt="Logo">
+                </a>
+                <a href="index.php" class="logo logo-small">
+                    <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+
+            <div class="menu-toggle">
+                <a href="javascript:void(0);" id="toggle_btn">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </div>
+
+            <div class="top-nav-search">
+                <form>
+                    <input type="text" class="form-control" placeholder="Search here">
+                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fas fa-bars"></i>
+            </a>
+
+
+            <ul class="nav user-menu">
+
+                <li class="nav-item dropdown noti-dropdown me-2">
+                    <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
+                        <img src="assets/img/icons/header-icon-05.svg" alt="">
+                    </a>
+                </li>
+
+                <li class="nav-item zoom-screen me-2">
+                    <a href="#" class="nav-link header-nav-list">
+                        <img src="assets/img/icons/header-icon-04.svg" alt="">
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown has-arrow new-user-menus">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <span class="user-img">
+                            <?php
+                            // Vérifie si une image est définie pour l'utilisateur connecté
+                            $user_image = !empty($_SESSION['auth_user']['photo'])
+                                ? 'assets/uploads/' . $_SESSION['auth_user']['photo']   // Chemin vers la photo uploadée
+                                : 'assets/images/default.jpg';             // Image par défaut
+                            ?>
+                            <img class="rounded-circle" src="<?= htmlspecialchars($user_image); ?>" width="31"
+                                alt="profile image">
+                            <div class="user-text">
+                                <h6><?= $_SESSION['auth_user']['nom'] . ' ' . $_SESSION['auth_user']['postnom'] ?></h6>
+                                <p class="text-muted mb-0"><?= $_SESSION['auth_user']['fonction'] ?></p>
+                            </div>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <?php
+                                // Vérifie si une image est définie pour l'utilisateur connecté
+                                $user_image = !empty($_SESSION['auth_user']['photo'])
+                                    ? 'assets/uploads/' . $_SESSION['auth_user']['photo']   // Chemin vers la photo uploadée
+                                    : 'assets/images/default.jpg';             // Image par défaut
+                                ?>
+                                <img class="rounded-circle" src="<?= htmlspecialchars($user_image); ?>" width="31"
+                                    alt="profile image">
+                            </div>
+                            <div class="user-text">
+                                <h6><?= $_SESSION['auth_user']['nom'] . ' ' . $_SESSION['auth_user']['postnom'] ?></h6>
+                                <p class="text-muted mb-0"><?= $_SESSION['auth_user']['fonction']  ?></p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <form action="logout.php" method="POST">
+                            <button type="submit" class="dropdown-item" name="logout">Logout</button>
+                        </form>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                            <span>Main Menu</span>
+                        </li>
+                        <li class="submenu">
+                            <a href="index.php"><span> Dashboard</span></a>
+                        </li>
+                        <li class="submenu active">
+                            <a href="#"><i class="fas fa-graduation-cap"></i> <span> Membres</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="liste_membre.php">Liste Membres</a></li>
+                                <li><a href="ajouter_membre.php">Ajouter Membres</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-book-reader"></i> <span> Publier</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="activite.php">Activités</a></li>
+                                <li><a href="evenement.php">Événements</a></li>
+                                <li><a href="temoignage.php">Témoignages</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-title">
+                            <span>Management</span>
+                        </li>
+                        <li>
+                            <a href="abonne.php"><i class="fas fa-holly-berry"></i> <span>Subscribes</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-sub-header">
+                                <h3 class="page-title">Detail de Membre</h3>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="liste_membre.php">Membres</a></li>
+                                    <li class="breadcrumb-item active">Details de Membre</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <?php
+                    if (isset($_GET['id'])) {
+                        $post_id = $_GET['id'];
+                        $affiche_agents = "SELECT * FROM membre WHERE id = $post_id";
+                        $agents_run = mysqli_query($con, $affiche_agents);
+
+                        if (mysqli_num_rows($agents_run) > 0) {
+                            foreach ($agents_run as $list)
+                    ?>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="about-info">
+                                            <h4>Profile <span><a href="javascript:;"><i
+                                                            class="feather-more-vertical"></i></a></span></h4>
+                                        </div>
+                                        <div class="student-profile-head">
+                                            <div class="profile-bg-img">
+                                                <img src="assets/img/profile-ba.jpg" alt="Profile">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="profile-user-box">
+                                                        <div class="profile-user-img">
+                                                            <img src="assets/uploads/<?= $list['photo']; ?>" alt="Profile">
+                                                            <div class="form-group students-up-files profile-edit-icon mb-0">
+                                                                <div class="uplod d-flex">
+                                                                    <label class="file-upload profile-upbtn mb-0">
+                                                                        <i class="feather-edit-3"></i><input type="file">
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="names-profiles">
+                                                            <h4><?= $list['nom'] . ' ' . $list['postnom'] . ' ' . $list['prenom']; ?></h4>
+                                                            <h5><?= $list['email'] ?></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                                                    <div class="follow-btn-group">
+                                                        <form action="code.php" method="POST">
+                                                            <button type="submit" name="delete_membre" class="btn btn-danger follow-btns" value="<?= $list['id']; ?>">Supprimer</button>
+                                                            <button type="submit" name="category_message" class="btn btn-info message-btns">Message</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="student-personals-grp">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="heading-detail">
+                                                        <h4>Details de Membre :</h4>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-user"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Noms</h4>
+                                                            <h5><?= $list['nom'] . ' ' . $list['postnom'] . ' ' . $list['prenom']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <img src="assets/img/icons/buliding-icon.svg" alt="">
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Institution </h4>
+                                                            <h5><?= $list['institution']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <img src="assets/img/icons/buliding-icon.svg" alt="">
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Faculté </h4>
+                                                            <h5><?= $list['faculte']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <img src="assets/img/icons/buliding-icon.svg" alt="">
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Promotion </h4>
+                                                            <h5><?= $list['promotion']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-phone-call"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Mobile</h4>
+                                                            <h5><?= $list['telephone']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-mail"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Email</h4>
+                                                            <h5><?= $list['email']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-user"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Genre</h4>
+                                                            <h5><?= $list['sexe']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-italic"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Profession</h4>
+                                                            <h5><?= $list['profession']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="student-personals-grp">
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <div class="heading-detail">
+                                                        <h4>Autres Details :</h4>
+                                                    </div>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-calendar"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Etat Civil</h4>
+                                                            <h5><?= $list['etat_civil']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity mb-0">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-map-pin"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Address</h4>
+                                                            <h5><?= $list['adress']; ?></h5>
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="hello-park">
+                                                        <h5>Presatation</h5>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                            aliquip ex commodo consequat. Duis aute irure dolor in reprehenderit
+                                                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                            Excepteur officia deserunt mollit anim id est laborum.</p>
+                                                    </div>
+                                                    <div class="hello-park">
+                                                        <h5>Education</h5>
+                                                        <div class="educate-year">
+                                                            <h6>2008 - 2009</h6>
+                                                            <p>Secondary Schooling at xyz school of secondary education, Mumbai.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <footer>
+                <p>Copyright © <a href="mailto:celestinrushigiradonnie@gmail.com">CELESTIN RUSHIGIRA Donnie</a> <?= date('d/m/Y'); ?></p>
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/feather.min.js"></script>
+
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

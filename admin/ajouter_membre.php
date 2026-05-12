@@ -167,7 +167,7 @@ include('conf/dbcon.php');
                             <div class="page-sub-header">
                                 <h3 class="page-title">Ajouter Membres</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="students.html">Ajouter un membre</a></li>
+                                    <li class="breadcrumb-item"><a href="ajouter_membre">Ajouter un membre</a></li>
                                     <li class="breadcrumb-item active">Ajouter un membre</li>
                                 </ul>
                             </div>
@@ -284,7 +284,18 @@ include('conf/dbcon.php');
                                                 </select>
                                             </div>
                                         </div>
-
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group local-forms">
+                                                <label>Categorie de Membre <span class="login-danger">*</span></label>
+                                                <select class="form-control select" name="type_membre" required>
+                                                    <option>Select Categorie</option>
+                                                    <option value="1">Membres sympathisants</option>
+                                                    <option value="2">Membres adhérents</option>
+                                                    <option value="3">Membres d’honneurs</option>
+                                                    <option value="4">Membres fondateurs</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group students-up-files">
                                                 <label>Photo (150px X 150px)</label>

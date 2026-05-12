@@ -165,7 +165,7 @@ include('conf/dbcon.php');
                             <div class="page-sub-header">
                                 <h3 class="page-title">Modifier Membres</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="students.html">Modifier ce membre</a></li>
+                                    <li class="breadcrumb-item"><a href="liste_membre">Liste Membres</a></li>
                                     <li class="breadcrumb-item active">Modifier ce membre</li>
                                 </ul>
                             </div>
@@ -216,7 +216,7 @@ include('conf/dbcon.php');
                                                         <label>Genre <span class="login-danger">*</span></label>
                                                         <select class="form-control select" name="gender" required>
                                                             <option>Select Gender</option>
-                                                            <option value="F" <?= ($membre_row['sexe'] == 'F   ') ? 'selected' : '' ?>>Feminin</option>
+                                                            <option value="F" <?= ($membre_row['sexe'] == 'F') ? 'selected' : '' ?>>Feminin</option>
                                                             <option value="M" <?= ($membre_row['sexe'] == 'M') ? 'selected' : '' ?>>Masculin</option>
                                                         </select>
                                                     </div>
@@ -284,12 +284,24 @@ include('conf/dbcon.php');
                                                         <label>Fonction <span class="login-danger">*</span></label>
                                                         <select class="form-control select" name="function" required>
                                                             <option>Select Function</option>
-                                                            <option value="membre" <?= ($membre_row['fonction'] == 'membre   ') ? 'selected' : '' ?>>Membre</option>
+                                                            <option value="membre" <?= ($membre_row['fonction'] == 'membre') ? 'selected' : '' ?>>Membre</option>
                                                             <option value="admin" <?= ($membre_row['fonction'] == 'admin') ? 'selected' : '' ?>>Admin</option>
                                                         </select>
                                                     </div>
                                                 </div>
 
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="form-group local-forms">
+                                                        <label>Categorie de Membre <span class="login-danger">*</span></label>
+                                                        <select class="form-control select" name="type_membre" required>
+                                                            <option>Select Categorie</option>
+                                                            <option value="1" <?= ($membre_row['type_membre'] == '1') ? 'selected' : '' ?>>Membres sympathisants</option>
+                                                            <option value="2" <?= ($membre_row['type_membre'] == '2') ? 'selected' : '' ?>>Membres adhérents</option>
+                                                            <option value="3" <?= ($membre_row['type_membre'] == '3') ? 'selected' : '' ?>>Membres d’honneurs</option>
+                                                            <option value="4" <?= ($membre_row['type_membre'] == '4') ? 'selected' : '' ?>>Membres fondateurs</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="col-12 col-sm-4">
                                                     <div class="form-group students-up-files">
                                                         <label>Photo (150px X 150px)</label>

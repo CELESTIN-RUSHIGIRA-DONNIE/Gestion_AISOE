@@ -27,6 +27,7 @@ if (isset($_POST["add_member"])) {
     $profession = mysqli_real_escape_string($con, $_POST['profession']);
     $address = mysqli_real_escape_string($con, $_POST['address']);
     $function = mysqli_real_escape_string($con, $_POST['function']);
+    $type_membre = mysqli_real_escape_string($con, $_POST['type_membre']);
 
     $image = $_FILES['photo']['name'];
     $image_tmp = $_FILES['photo']['tmp_name'];
@@ -48,8 +49,8 @@ if (isset($_POST["add_member"])) {
         header("Location: ajouter_membre.php");
         exit;
     } else {
-        $insert_query = "INSERT INTO membre (nom, postnom, prenom, sexe, telephone, email, institution, faculte, promotion, etat_civil, profession, adress, fonction, photo) 
-        VALUES ('$nom', '$postnom', '$prenom', '$genre', '$telephone', '$email', '$institution', '$faculte', '$promotion', '$civil_status', '$profession', '$address', '$function', '$image')";
+        $insert_query = "INSERT INTO membre (nom, postnom, prenom, sexe, telephone, email, institution, faculte, promotion, etat_civil, profession, adress, fonction, type_membre, photo) 
+        VALUES ('$nom', '$postnom', '$prenom', '$genre', '$telephone', '$email', '$institution', '$faculte', '$promotion', '$civil_status', '$profession', '$address', '$function', '$type_membre', '$image')";
         $insert_query_run = mysqli_query($con, $insert_query);
 
         if ($insert_query_run) {
@@ -81,6 +82,7 @@ else if(isset($_POST["edit_member"])) {
     $profession = mysqli_real_escape_string($con, $_POST['profession']);
     $address = mysqli_real_escape_string($con, $_POST['address']);
     $function = mysqli_real_escape_string($con, $_POST['function']);
+    $type_membre = mysqli_real_escape_string($con, $_POST['type_membre']);
 
     $old_filename = $_POST['old_photo'];
     $image = $_FILES['new_photo']['name'];
@@ -109,7 +111,7 @@ else if(isset($_POST["edit_member"])) {
 
     $query = "UPDATE membre SET nom='$nom', postnom='$postnom', prenom='$prenom', sexe='$genre', 
     telephone='$telephone', email='$email', institution='$institution', faculte='$faculte', promotion='$promotion', 
-    etat_civil='$civil_status', profession='$profession', adress='$address', fonction='$function', 
+    etat_civil='$civil_status', profession='$profession', adress='$address', fonction='$function', type_membre='$type_membre',
     photo='$new_filename' WHERE id='$member_id'";
 
     $query_run = mysqli_query($con, $query);

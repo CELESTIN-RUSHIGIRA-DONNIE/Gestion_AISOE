@@ -14,7 +14,7 @@ include('conf/dbcon.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>AISOE - Activités</title>
+    <title>AISOE - Partenaire Details</title>
 
     <link rel="shortcut icon" href="assets/img/favicon.png">
 
@@ -140,31 +140,31 @@ include('conf/dbcon.php');
                         <li class="submenu">
                             <a href="index.php"><span> Dashboard</span></a>
                         </li>
-                        <li class="submenu ">
-                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> <span> Membre</span> <span
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i><span> Membres</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="liste_membre.php">Liste Membres</a></li>
                                 <li><a href="ajouter_membre.php">Ajouter Membres</a></li>
                             </ul>
                         </li>
-
-                        <li class="submenu active">
+                        <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span> Publier</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="activite.php" class="active">Activités</a></li>
+                                <li><a href="activite.php">Activités</a></li>
                                 <li><a href="evenement.php">Événements</a></li>
                                 <li><a href="temoignage.php">Témoignages</a></li>
                             </ul>
                         </li>
+
                         <li class="menu-title">
                             <span>Management</span>
                         </li>
                         <li>
                             <a href="abonne.php"><i class="fas fa-holly-berry"></i> <span>Subscribes</span></a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="ajouter_partenaire"><i class="fa fa-handshake" aria-hidden="true"></i> <span>Partenaires</span></a>
                         </li>
                     </ul>
@@ -175,134 +175,120 @@ include('conf/dbcon.php');
 
         <div class="page-wrapper">
             <div class="content container-fluid">
-
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Activités</h3>
+                                <h3 class="page-title">Detail de Partenaire</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="activite.php">Liste des Activités</a></li>
-                                    <li class="breadcrumb-item active">Toutes les activités</li>
+                                    <li class="breadcrumb-item"><a href="ajouter_partenaire.php">Partenaires</a></li>
+                                    <li class="breadcrumb-item active">Details de Partenaire</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <?php
+                    if (isset($_GET['id'])) {
+                        $post_id = $_GET['id'];
+                        $affiche_agents = "SELECT * FROM partenaire WHERE id = $post_id";
+                        $agents_run = mysqli_query($con, $affiche_agents);
 
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card card-table comman-shadow">
+                        if (mysqli_num_rows($agents_run) > 0) {
+                            foreach ($agents_run as $list)
+                    ?>
                             <div class="card-body">
-
-                                <div class="page-header">
-                                    <div class="row align-items-center">
-                                        <div class="col">
-                                            <h3 class="page-title">Activités de AISOE</h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="about-info">
+                                            <h4>Profile <span><a href="javascript:;"><i
+                                                            class="feather-more-vertical"></i></a></span></h4>
                                         </div>
-                                        <div class="col-auto text-end float-end ms-auto download-grp">
-                                            <a href="liste_activite.php" class="btn btn-outline-gray me-2"><i
-                                                    class="feather-list"></i></a>
-                                            <a href="activite.php" class="btn btn-primary"><i
-                                                    class="fas fa-plus"></i></a>
+                                        <div class="student-profile-head">
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="profile-user-box">
+                                                        <div class="profile-user-img">
+                                                            <img src="assets/uploads/partenaire/<?= $list['photo']; ?>" alt="Profile">
+                                                        </div>
+                                                        <div class="names-profiles">
+                                                            <h4><?= $list['nom'] ?></h4>
+                                                            <h5><?= $list['adresse'] ?></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                                                    <div class="follow-btn-group">
+                                                        <form action="code.php" method="POST">
+                                                            <button type="submit" name="delete_partenaire" class="btn btn-danger follow-btns" value="<?= $list['id']; ?>">Supprimer</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="table-responsive">
-                                    <table
-                                        class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
-                                        <thead class="student-thread">
-                                            <tr>
-                                                <th>
-                                                    <div class="form-check check-tables">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="something">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="student-personals-grp">
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <div class="heading-detail">
+                                                        <h4>Autres Details :</h4>
                                                     </div>
-                                                </th>
-                                                <th>ID</th>
-                                                <th>Photo</th>
-                                                <th>Titre</th>
-                                                <th>Statut</th>
-                                                <th class="text-end">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $affiche_activites = "SELECT * FROM activite ORDER BY id DESC";
-                                            $activites_run = mysqli_query($con, $affiche_activites);
-
-                                            if (mysqli_num_rows($activites_run) > 0) {
-                                                foreach ($activites_run as $list) {
-                                            ?>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check check-tables">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    value="something">
-                                                            </div>
-                                                        </td>
-                                                        <td><?= $list['id']; ?></td>
-                                                        <td>
-                                                            <h2 class="table-avatar">
-                                                                <a href="details-activite.php?id=<?= $list['id']; ?>"
-                                                                    class="avatar avatar-sm me-2"><img
-                                                                        class="avatar-img rounded-circle"
-                                                                        src="assets/uploads/activite/<?= $list['photo']; ?>"
-                                                                        alt="User Image"></a>
-                                                            </h2>
-                                                        </td>
-                                                        <td><?= $list['titre']; ?></td>
-                                                        <td>
-                                                            <span style="color: <?= $list['statut'] == 1 ? 'green' : 'red'; ?>;">
-                                                                <?= $list['statut'] == 1 ? 'Visible' : 'Caché'; ?>
-                                                            </span>
-                                                        </td>
-                                                        <td class="text-end">
-                                                            <div class="actions">
-                                                                <a href="details-activite.php?id=<?= $list['id']; ?>"
-                                                                    class="btn btn-sm bg-success-light me-2 ">
-                                                                    <i class="feather-eye"></i>
-                                                                </a>
-
-                                                                <a href="edit_activite.php?id=<?= $list['id']; ?>" class="btn btn-sm bg-danger-light">
-                                                                    <i class="feather-edit"></i>
-                                                                </a>
-                                                                <form action="code.php" method="POST">
-                                                                    <button type="submit" name="delete_activite" value="<?= $list['id']; ?>" class="btn btn-sm bg-danger-light">
-                                                                        <i class="feather-trash-2"></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                }
-                                            } else {
-                                                ?>
-                                                <tr>
-                                                    <td colspan="6" class="bg-danger text-white text-center">Pas d'activité enregistrée</td>
-                                                </tr>
-                                            <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                                    <div class="personal-activity">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-user"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Nom</h4>
+                                                            <h5><?= $list['nom']; ?></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="personal-activity mb-0">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-map-pin"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Address</h4>
+                                                            <h5><?= $list['adresse']; ?></h5>
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="personal-activity mb-0">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-book"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Présentation</h4>
+                                                            <p><?= $list['description']; ?></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
-        </div>
 
-        <footer>
-            <p>Copyright © <a href="mailto:celestinrushigiradonnie@gmail.com">CELESTIN RUSHIGIRA Donnie</a> <?= date('d/m/Y'); ?></p>
-        </footer>
+            <footer>
+                <p>Copyright © <a href="mailto:celestinrushigiradonnie@gmail.com">CELESTIN RUSHIGIRA Donnie</a> <?= date('d/m/Y'); ?></p>
+            </footer>
+
+        </div>
 
     </div>
 
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
 
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -310,8 +296,6 @@ include('conf/dbcon.php');
     <script src="assets/js/feather.min.js"></script>
 
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <script src="assets/plugins/datatables/datatables.min.js"></script>
 
     <script src="assets/js/script.js"></script>
 </body>

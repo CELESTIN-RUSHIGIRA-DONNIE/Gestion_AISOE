@@ -150,6 +150,9 @@ include('conf/dbcon.php');
                         <li>
                             <a href="abonne.php"><i class="fas fa-holly-berry"></i> <span>Subscribes</span></a>
                         </li>
+                        <li>
+                            <a href="ajouter_partenaire"><i class="fa fa-handshake" aria-hidden="true"></i> <span>Partenaires</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>

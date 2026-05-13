@@ -141,7 +141,7 @@ include('conf/dbcon.php');
                             <a href="index.php"><span> Dashboard</span></a>
                         </li>
                         <li class="submenu active">
-                            <a href="#"><i class="fas fa-graduation-cap"></i> <span> Membres</span> <span
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i><span> Membres</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="liste_membre.php">Liste Membres</a></li>
@@ -163,6 +163,9 @@ include('conf/dbcon.php');
                         </li>
                         <li>
                             <a href="abonne.php"><i class="fas fa-holly-berry"></i> <span>Subscribes</span></a>
+                        </li>
+                        <li>
+                            <a href="ajouter_partenaire"><i class="fa fa-handshake" aria-hidden="true"></i> <span>Partenaires</span></a>
                         </li>
                     </ul>
                 </div>
@@ -230,7 +233,7 @@ include('conf/dbcon.php');
                                                     <div class="follow-btn-group">
                                                         <form action="code.php" method="POST">
                                                             <button type="submit" name="delete_membre" class="btn btn-danger follow-btns" value="<?= $list['id']; ?>">Supprimer</button>
-                                                            <button type="submit" name="category_message" class="btn btn-info message-btns">Message</button>
+                                                            <a href="print-card.php?id=<?= $list['id']; ?>" class="btn btn-info message-btns" target="_blank">Print Card</a>
                                                         </form>
                                                     </div>
                                                 </div>

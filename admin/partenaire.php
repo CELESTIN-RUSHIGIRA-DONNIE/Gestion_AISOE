@@ -127,12 +127,12 @@ include('conf/dbcon.php');
                         <li class="submenu">
                             <a href="index.php"><span> Dashboard</span></a>
                         </li>
-                        <li class="submenu active">
+                        <li class="submenu">
                             <a href="#"><i class="fa fa-users" aria-hidden="true"></i><span> Membres</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="liste_membre.php">Liste Membres</a></li>
-                                <li><a href="ajouter_membre.php" class="active">Ajouter Membres</a></li>
+                                <li><a href="ajouter_membre.php">Ajouter Membres</a></li>
                             </ul>
                         </li>
 
@@ -152,7 +152,7 @@ include('conf/dbcon.php');
                         <li>
                             <a href="abonne.php"><i class="fas fa-holly-berry"></i> <span>Subscribes</span></a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="ajouter_partenaire"><i class="fa fa-handshake" aria-hidden="true"></i> <span>Partenaires</span></a>
                         </li>
                     </ul>
@@ -165,13 +165,13 @@ include('conf/dbcon.php');
             <div class="content container-fluid">
 
                 <div class="page-header">
-                    <div class="row align-items-center">
+                    <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Ajouter Membres</h3>
+                                <h3 class="page-title">Partenaires</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="ajouter_membre">Ajouter un membre</a></li>
-                                    <li class="breadcrumb-item active">Ajouter un membre</li>
+                                    <li class="breadcrumb-item"><a href="ajouter_partenaire">Liste des Partenaires</a></li>
+                                    <li class="breadcrumb-item active">Ajouter Partenaire</li>
                                 </ul>
                             </div>
                         </div>
@@ -182,126 +182,34 @@ include('conf/dbcon.php');
                     <div class="col-sm-12">
                         <div class="card comman-shadow">
                             <div class="card-body">
-                                <form action="code.php" method="POST" enctype="multipart/form-data">
+                                <?php if (isset($_SESSION['message'])) { ?>
+                                    <div class="alert alert-<?php echo $_SESSION['msg_type']; ?> alert-dismissible fade show mb-3" role="alert">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <?php echo $_SESSION['message']; ?>
+                                    </div>
+                                    <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
+                                <?php } ?>
+                                <form action="code.php" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-12">
-                                            <h5 class="form-title student-info">Information pour le membre <span><a href="javascript:;"><i
+                                            <h5 class="form-title student-info">Information du Partenaire <span><a href="javascript:;"><i
                                                             class="feather-more-vertical"></i></a></span></h5>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
                                                 <label>Nom <span class="login-danger">*</span></label>
-                                                <input class="form-control" type="text" placeholder="Entrez le nom" name="first_name" required>
+                                                <input class="form-control" type="text" placeholder="Entrez le nom du partenaire" name="nom" required>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
-                                                <label>Post nom <span class="login-danger">*</span></label>
-                                                <input class="form-control" type="text" placeholder="Entrez le post nom" name="last_name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Prenom <span class="login-danger">*</span></label>
-                                                <input class="form-control" type="text" placeholder="Entrez le prenom" name="middle_name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Genre <span class="login-danger">*</span></label>
-                                                <select class="form-control select" name="gender" required>
-                                                    <option>Select Gender</option>
-                                                    <option value="F">Feminin</option>
-                                                    <option value="M">Masculin</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Telephone <span class="login-danger">*</span></label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Entrez le numero de telephone" name="phone_number">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>E-Mail <span class="login-danger">*</span></label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Entrez l'adresse email" name="email">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Institution </label>
-                                                <input class="form-control" type="text" placeholder="Entrez le nom de l'institution" name="institution">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Faculté </label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Entrez le nom de la faculté" name="faculty">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Promotion </label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Entrez votre promotion" name="promotion">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Etat Civil </label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Entrez votre état civil" name="civil_status">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Profession </label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Entrez votre profession" name="profession">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Adresse </label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Entrez votre adresse" name="address" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Fonction <span class="login-danger">*</span></label>
-                                                <select class="form-control select" name="function" required>
-                                                    <option>Select Function</option>
-                                                    <option value="membre">Membre</option>
-                                                    <option value="admin">Admin</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-4">
-                                            <div class="form-group local-forms">
-                                                <label>Categorie de Membre <span class="login-danger">*</span></label>
-                                                <select class="form-control select" name="type_membre" required>
-                                                    <option>Select Categorie</option>
-                                                    <option value="1">Membres sympathisants</option>
-                                                    <option value="2">Membres adhérents</option>
-                                                    <option value="3">Membres d’honneurs</option>
-                                                    <option value="4">Membres fondateurs</option>
-                                                </select>
+                                                <label>Adresse <span class="login-danger">*</span></label>
+                                                <input class="form-control" type="text" placeholder="Entrez l'adresse" name="adresse" required>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group students-up-files">
-                                                <label>Photo (150px X 150px)</label>
+                                                <label>Photo du Partenaire</label>
                                                 <div class="uplod">
                                                     <label class="file-upload image-upbtn mb-0">
                                                         Choose File <input type="file" name="photo" required>
@@ -309,10 +217,20 @@ include('conf/dbcon.php');
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="form-group local-forms">
+                                                <label>Description <span class="login-danger">*</span></label>
+                                                <textarea class="form-control" type="text" placeholder="Entrez la description" name="description" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Visible : </label>
+                                            <input type="checkbox" name="visible" width="70px" height="70px">
+                                        </div>
 
                                         <div class="col-12">
                                             <div class="student-submit">
-                                                <button type="submit" name="add_member" class="btn btn-primary">Enregistrer</button>
+                                                <button type="submit" name="Enregistrer_partenaire" class="btn btn-primary">Enregistrer</button>
                                             </div>
                                         </div>
                                     </div>

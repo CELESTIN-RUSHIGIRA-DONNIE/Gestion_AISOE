@@ -212,7 +212,8 @@
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="features-item">
-              <i class="bi bi-eye" style="color: #ffbb2c;"></i>
+              <!-- <i class="bi bi-eye" style="color: #ffbb2c;"></i> -->
+              <img src="assets/img/aisoe.jpg" alt="UEA BUKAVU" class="img-fluid" style="width: 50px; height: 50px;"> 
               <h3><a href="" class="stretched-link">UEA BUKAVU</a></h3>
             </div>
           </div><!-- End Feature Item -->

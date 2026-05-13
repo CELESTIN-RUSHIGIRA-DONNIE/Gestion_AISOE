@@ -64,8 +64,7 @@ if (isset($_POST["add_member"])) {
             exit;
         }
     }
-}
-else if(isset($_POST["edit_member"])) {
+} else if (isset($_POST["edit_member"])) {
 
     $member_id = mysqli_real_escape_string($con, $_POST['member_id']);
 
@@ -125,13 +124,12 @@ else if(isset($_POST["edit_member"])) {
         header("Location: edit_membre.php?id=$member_id");
         exit;
     }
-}
-else if (isset($_POST['delete_membre'])) {
+} else if (isset($_POST['delete_membre'])) {
     $member_id = $_POST['delete_membre'];
 
     $query = "UPDATE membre SET status='0' WHERE id='$member_id'";
     $query_run = mysqli_query($con, $query);
-    
+
     if ($query_run) {
         $_SESSION['toastr'] = ['type' => 'success', 'message' => 'Membre supprimé avec succès.'];
         header("Location: liste_membre.php");
@@ -145,7 +143,7 @@ else if (isset($_POST['delete_membre'])) {
 
 // Activité
 
-else if (isset($_POST["add_activite"])) {   
+else if (isset($_POST["add_activite"])) {
 
     $titre = mysqli_real_escape_string($con, $_POST['titre']);
     $description = mysqli_real_escape_string($con, $_POST['description']);
@@ -178,8 +176,7 @@ else if (isset($_POST["add_activite"])) {
         header("Location: activite.php");
         exit;
     }
-}
-else if(isset($_POST["edit_activite"])) {
+} else if (isset($_POST["edit_activite"])) {
 
     $activite_id = mysqli_real_escape_string($con, $_POST['activite_id']);
 
@@ -227,25 +224,21 @@ else if(isset($_POST["edit_activite"])) {
         header("Location: edit_activite.php?id=$activite_id");
         exit;
     }
-}
-else if (isset($_POST['delete_activite'])) {
+} else if (isset($_POST['delete_activite'])) {
     $activite_id = $_POST['delete_activite'];
 
     $check_img_query = "SELECT * FROM activite WHERE id='$activite_id' LIMIT 1";
-    $img_res = mysqli_query($con,$check_img_query);
+    $img_res = mysqli_query($con, $check_img_query);
     $res_data = mysqli_fetch_array($img_res);
     $image = $res_data['photo'];
 
     $query = "DELETE FROM activite WHERE id='$activite_id'";
     $query_run = mysqli_query($con, $query);
 
-    if ($query_run) 
-    {
-        if ($image != NULL)
-         {
-            if (file_exists('assets/uploads/activite/' .$image)) 
-            {
-                unlink("assets/uploads/activite/" .$image);
+    if ($query_run) {
+        if ($image != NULL) {
+            if (file_exists('assets/uploads/activite/' . $image)) {
+                unlink("assets/uploads/activite/" . $image);
             }
         }
         $_SESSION['message'] = "Activité supprimée avec succès";
@@ -260,7 +253,7 @@ else if (isset($_POST['delete_activite'])) {
 
 //Evenement
 
-else if (isset($_POST["add_evenement"])) {   
+else if (isset($_POST["add_evenement"])) {
 
     $titre = mysqli_real_escape_string($con, $_POST['titre']);
     $description = mysqli_real_escape_string($con, $_POST['description']);
@@ -293,8 +286,7 @@ else if (isset($_POST["add_evenement"])) {
         header("Location: evenement.php");
         exit;
     }
-}
-else if (isset($_POST["edit_evenement"])) {
+} else if (isset($_POST["edit_evenement"])) {
 
     $evenement_id = mysqli_real_escape_string($con, $_POST['evenement_id']);
 
@@ -342,25 +334,21 @@ else if (isset($_POST["edit_evenement"])) {
         header("Location: edit_evenement.php?id=$evenement_id");
         exit;
     }
-}
-else if (isset($_POST['delete_evenement'])) {
+} else if (isset($_POST['delete_evenement'])) {
     $evenement_id = $_POST['delete_evenement'];
 
     $check_img_query = "SELECT * FROM evenement WHERE id='$evenement_id' LIMIT 1";
-    $img_res = mysqli_query($con,$check_img_query);
+    $img_res = mysqli_query($con, $check_img_query);
     $res_data = mysqli_fetch_array($img_res);
     $image = $res_data['photo'];
 
     $query = "DELETE FROM evenement WHERE id='$evenement_id'";
     $query_run = mysqli_query($con, $query);
 
-    if ($query_run) 
-    {
-        if ($image != NULL)
-         {
-            if (file_exists('assets/uploads/evenement/' .$image)) 
-            {
-                unlink("assets/uploads/evenement/" .$image);
+    if ($query_run) {
+        if ($image != NULL) {
+            if (file_exists('assets/uploads/evenement/' . $image)) {
+                unlink("assets/uploads/evenement/" . $image);
             }
         }
         $_SESSION['message'] = "Evenement supprimé avec succès";
@@ -380,32 +368,133 @@ else if (isset($_POST['validation_temoignage'])) {
 
     $query = "UPDATE temoignage SET statut='1' WHERE id='$temoignage_id'";
     $query_run = mysqli_query($con, $query);
-    
+
     if ($query_run) {
-        $_SESSION['toastr'] = ['type' => 'success', 'message' => 'Temoignage validé avec succès.'];
+        $_SESSION['message'] = "Temoignage validé avec succès.";
+        $_SESSION['msg_type'] = "success";
         header("Location: temoignage.php");
         exit(0);
     } else {
-        $_SESSION['toastr'] = ['type' => 'error', 'message' => 'Erreur lors de la validation du temoignage.'];
+        $_SESSION['message'] = "Erreur lors de la validation du temoignage.";
+        $_SESSION['msg_type'] = "danger";
         header("Location: temoignage.php");
         exit(0);
     }
-}
-else if (isset($_POST['rejet_temoignage'])) {
+} else if (isset($_POST['rejet_temoignage'])) {
     $temoignage_id = $_POST['rejet_temoignage'];
 
     $query = "UPDATE temoignage SET statut='2' WHERE id='$temoignage_id'";
     $query_run = mysqli_query($con, $query);
-    
+
     if ($query_run) {
-        $_SESSION['toastr'] = ['type' => 'success', 'message' => 'Temoignage rejeté avec succès.'];
+        $_SESSION['message'] = "Temoignage rejeté avec succès.";
+        $_SESSION['msg_type'] = "success";
         header("Location: temoignage.php");
         exit(0);
     } else {
-        $_SESSION['toastr'] = ['type' => 'error', 'message' => 'Erreur lors du rejet du temoignage.'];
+        $_SESSION['message'] = "Erreur lors du rejet du temoignage.";
+        $_SESSION['msg_type'] = "danger";
         header("Location: temoignage.php");
         exit(0);
     }
 }
 
-    
+//Partenaire
+else if (isset($_POST["Enregistrer_partenaire"])) {
+
+    $nom = mysqli_real_escape_string($con, $_POST['nom']);
+    $adresse = mysqli_real_escape_string($con, $_POST['adresse']);
+    $description = mysqli_real_escape_string($con, $_POST['description']);
+    $visible = isset($_POST['visible']) ? 1 : 0;
+
+    $image = $_FILES['photo']['name'];
+    $image_tmp = $_FILES['photo']['tmp_name'];
+
+    // Vérification de l'image
+    $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+    $file_extension = pathinfo($image, PATHINFO_EXTENSION);
+    if (!in_array($file_extension, $allowed_extensions)) {
+        $_SESSION['message'] = "Format d'image non valide.";
+        $_SESSION['msg_type'] = "danger";
+        header('Location: partenaire.php');
+        exit;
+    }
+
+    $check_membre_query = "SELECT nom FROM partenaire WHERE nom='$nom'";
+    $check_membre_query_run = mysqli_query($con, $check_membre_query);
+
+    if (mysqli_num_rows($check_membre_query_run) > 0) {
+
+        $_SESSION['message'] = "Ce partenaire existe déjà.";
+        $_SESSION['msg_type'] = "danger";
+        header('Location: partenaire');
+        exit;
+    } else {
+        $insert_query = "INSERT INTO partenaire (nom,adresse,description,photo,status) 
+        VALUES ('$nom','$adresse','$description','$image','$visible')";
+        $insert_query_run = mysqli_query($con, $insert_query);
+
+        if ($insert_query_run) {
+            move_uploaded_file($image_tmp, "assets/uploads/partenaire/" . $image);
+            $_SESSION['message'] = "Partenaire Ajouter Avec Succès";
+            $_SESSION['msg_type'] = "success";
+            header('Location: partenaire');
+            exit;
+        } else {
+            $_SESSION['message'] = "Erreur lors de l'enregistrement";
+            $_SESSION['msg_type'] = "danger";
+            header('Location: partenaire');
+            exit;
+        }
+    }
+} else if (isset($_POST["Modifier_partenaire"])) {
+
+    $member_id = mysqli_real_escape_string($con, $_POST['member_id']);
+
+    $nom = mysqli_real_escape_string($con, $_POST['nom']);
+    $adresse = mysqli_real_escape_string($con, $_POST['adresse']);
+    $description = mysqli_real_escape_string($con, $_POST['description']);
+    $visible = isset($_POST['visible']) ? 1 : 0;
+
+    $old_filename = $_POST['old_photo'];
+    $image = $_FILES['new_photo']['name'];
+
+    $new_filename = $old_filename;
+
+    if (!empty($image)) {
+        $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+        $file_extension = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+
+        if (!in_array($file_extension, $allowed_extensions)) {
+            $_SESSION['message'] = "Format d'image non valide.";
+            $_SESSION['msg_type'] = "danger";
+            header('Location: edit_partenaire.php?id=$member_id');
+            exit;
+        }
+
+        $upload_dir = "assets/uploads/partenaire/";
+
+        if (!empty($old_filename) && file_exists($upload_dir . $old_filename)) {
+            unlink($upload_dir . $old_filename);
+        }
+
+        $new_filename = time() . '_' . basename($image);
+        move_uploaded_file($_FILES['new_photo']['tmp_name'], $upload_dir . $new_filename);
+    }
+
+    $query = "UPDATE partenaire SET nom='$nom', adresse='$adresse', description='$description', status='$visible', photo='$new_filename' WHERE id='$member_id'";
+
+    $query_run = mysqli_query($con, $query);
+
+    if ($query_run) {
+            $_SESSION['message'] = "Partenaire mis à jour avec succès.";
+            $_SESSION['msg_type'] = "success";
+            header('Location: ajouter_partenaire.php');
+            exit;
+    } else {
+        $_SESSION['message'] = "Erreur lors de la mise à jour du partenaire.";
+        $_SESSION['msg_type'] = "danger";
+        header("Location: edit_partenaire.php?id=$member_id");
+        exit;
+    }
+}

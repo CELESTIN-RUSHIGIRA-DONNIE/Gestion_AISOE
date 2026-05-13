@@ -14,34 +14,22 @@ include('conf/dbcon.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>AISOE - Activités</title>
-
+    <title>AISOE - Modifier Partenaire</title>
     <link rel="shortcut icon" href="assets/img/favicon.png">
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="assets/plugins/feather/feather.css">
-
     <link rel="stylesheet" href="assets/plugins/icons/flags/flags.css">
-
+    <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-
-    <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
-
+    <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-
     <div class="main-wrapper">
-
         <div class="header">
-
             <div class="header-left">
                 <a href="index.php" class="logo">
                     <img src="assets/img/logo.png" alt="Logo">
@@ -71,7 +59,6 @@ include('conf/dbcon.php');
 
 
             <ul class="nav user-menu">
-
                 <li class="nav-item dropdown noti-dropdown me-2">
                     <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
                         <img src="assets/img/icons/header-icon-05.svg" alt="">
@@ -140,8 +127,8 @@ include('conf/dbcon.php');
                         <li class="submenu">
                             <a href="index.php"><span> Dashboard</span></a>
                         </li>
-                        <li class="submenu ">
-                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> <span> Membre</span> <span
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i><span> Membres</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="liste_membre.php">Liste Membres</a></li>
@@ -149,11 +136,11 @@ include('conf/dbcon.php');
                             </ul>
                         </li>
 
-                        <li class="submenu active">
+                        <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span> Publier</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="activite.php" class="active">Activités</a></li>
+                                <li><a href="activite.php">Activités</a></li>
                                 <li><a href="evenement.php">Événements</a></li>
                                 <li><a href="temoignage.php">Témoignages</a></li>
                             </ul>
@@ -161,10 +148,11 @@ include('conf/dbcon.php');
                         <li class="menu-title">
                             <span>Management</span>
                         </li>
+
                         <li>
                             <a href="abonne.php"><i class="fas fa-holly-berry"></i> <span>Subscribes</span></a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="ajouter_partenaire"><i class="fa fa-handshake" aria-hidden="true"></i> <span>Partenaires</span></a>
                         </li>
                     </ul>
@@ -180,10 +168,10 @@ include('conf/dbcon.php');
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Activités</h3>
+                                <h3 class="page-title">Partenaires</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="activite.php">Liste des Activités</a></li>
-                                    <li class="breadcrumb-item active">Toutes les activités</li>
+                                    <li class="breadcrumb-item"><a href="ajouter_partenaire">Liste des Partenaires</a></li>
+                                    <li class="breadcrumb-item active">Modifier Partenaire</li>
                                 </ul>
                             </div>
                         </div>
@@ -192,103 +180,70 @@ include('conf/dbcon.php');
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="card card-table comman-shadow">
+                        <div class="card comman-shadow">
                             <div class="card-body">
+                                <?php
+                                if (isset($_GET['id'])) {
+                                    $_id = $_GET['id'];
+                                    $partenaire = "SELECT * FROM partenaire WHERE id ='$_id'";
+                                    $partenaire_run = mysqli_query($con, $partenaire);
 
-                                <div class="page-header">
-                                    <div class="row align-items-center">
-                                        <div class="col">
-                                            <h3 class="page-title">Activités de AISOE</h3>
-                                        </div>
-                                        <div class="col-auto text-end float-end ms-auto download-grp">
-                                            <a href="liste_activite.php" class="btn btn-outline-gray me-2"><i
-                                                    class="feather-list"></i></a>
-                                            <a href="activite.php" class="btn btn-primary"><i
-                                                    class="fas fa-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="table-responsive">
-                                    <table
-                                        class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
-                                        <thead class="student-thread">
-                                            <tr>
-                                                <th>
-                                                    <div class="form-check check-tables">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="something">
+                                    if (mysqli_num_rows($partenaire_run) > 0) {
+                                        $partenaire_row = mysqli_fetch_array($partenaire_run)
+                                ?>
+                                        <form action="code.php" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="member_id" value="<?= $partenaire_row['id']; ?>">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5 class="form-title student-info">Modifier Partenaire <span><a href="javascript:;"><i
+                                                                    class="feather-more-vertical"></i></a></span></h5>
+                                                </div>
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="form-group local-forms">
+                                                        <label>Nom <span class="login-danger">*</span></label>
+                                                        <input class="form-control" type="text" value="<?= $partenaire_row['nom']; ?>" name="nom" required>
                                                     </div>
-                                                </th>
-                                                <th>ID</th>
-                                                <th>Photo</th>
-                                                <th>Titre</th>
-                                                <th>Statut</th>
-                                                <th class="text-end">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $affiche_activites = "SELECT * FROM activite ORDER BY id DESC";
-                                            $activites_run = mysqli_query($con, $affiche_activites);
+                                                </div>
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="form-group local-forms">
+                                                        <label>Adresse <span class="login-danger">*</span></label>
+                                                        <input class="form-control" type="text" value="<?= $partenaire_row['adresse']; ?>" name="adresse" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="form-group students-up-files">
+                                                        <label>Photo du Partenaire</label>
+                                                        <div class="uplod">
+                                                            <label class="file-upload image-upbtn mb-0">
+                                                                <input type="hidden" name="old_photo" value="<?= $partenaire_row['photo']; ?>">
+                                                                Choose File <input type="file" name="new_photo">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group local-forms">
+                                                        <label>Description <span class="login-danger">*</span></label>
+                                                        <textarea class="form-control" type="text" name="description"><?= $partenaire_row['description'] ?></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Visible : </label>
+                                                    <input type="checkbox" name="visible" <?= ($partenaire_row['status'] == 1) ? 'checked' : '' ?> width="70px" height="70px">
+                                                </div>
 
-                                            if (mysqli_num_rows($activites_run) > 0) {
-                                                foreach ($activites_run as $list) {
-                                            ?>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check check-tables">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    value="something">
-                                                            </div>
-                                                        </td>
-                                                        <td><?= $list['id']; ?></td>
-                                                        <td>
-                                                            <h2 class="table-avatar">
-                                                                <a href="details-activite.php?id=<?= $list['id']; ?>"
-                                                                    class="avatar avatar-sm me-2"><img
-                                                                        class="avatar-img rounded-circle"
-                                                                        src="assets/uploads/activite/<?= $list['photo']; ?>"
-                                                                        alt="User Image"></a>
-                                                            </h2>
-                                                        </td>
-                                                        <td><?= $list['titre']; ?></td>
-                                                        <td>
-                                                            <span style="color: <?= $list['statut'] == 1 ? 'green' : 'red'; ?>;">
-                                                                <?= $list['statut'] == 1 ? 'Visible' : 'Caché'; ?>
-                                                            </span>
-                                                        </td>
-                                                        <td class="text-end">
-                                                            <div class="actions">
-                                                                <a href="details-activite.php?id=<?= $list['id']; ?>"
-                                                                    class="btn btn-sm bg-success-light me-2 ">
-                                                                    <i class="feather-eye"></i>
-                                                                </a>
+                                                <div class="col-12">
+                                                    <div class="student-submit">
+                                                        <button type="submit" name="Modifier_partenaire" class="btn btn-primary">Enregistrer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                <?php
 
-                                                                <a href="edit_activite.php?id=<?= $list['id']; ?>" class="btn btn-sm bg-danger-light">
-                                                                    <i class="feather-edit"></i>
-                                                                </a>
-                                                                <form action="code.php" method="POST">
-                                                                    <button type="submit" name="delete_activite" value="<?= $list['id']; ?>" class="btn btn-sm bg-danger-light">
-                                                                        <i class="feather-trash-2"></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                }
-                                            } else {
-                                                ?>
-                                                <tr>
-                                                    <td colspan="6" class="bg-danger text-white text-center">Pas d'activité enregistrée</td>
-                                                </tr>
-                                            <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -304,15 +259,12 @@ include('conf/dbcon.php');
 
 
     <script src="assets/js/jquery-3.6.0.min.js"></script>
-
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/js/feather.min.js"></script>
-
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <script src="assets/plugins/datatables/datatables.min.js"></script>
-
+    <script src="assets/plugins/select2/js/select2.min.js"></script>
+    <script src="assets/plugins/moment/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 

@@ -140,7 +140,7 @@ include('conf/dbcon.php');
                             <a href="index.php"><span> Dashboard</span></a>
                         </li>
                         <li class="submenu ">
-                            <a href="#"><i class="fas fa-graduation-cap"></i> <span> Membre</span> <span
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> <span> Membre</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="liste_membre.php">Liste Membres</a></li>
@@ -162,6 +162,9 @@ include('conf/dbcon.php');
                         </li>
                         <li>
                             <a href="abonne.php"><i class="fas fa-holly-berry"></i> <span>Subscribes</span></a>
+                        </li>
+                        <li>
+                            <a href="ajouter_partenaire"><i class="fa fa-handshake" aria-hidden="true"></i> <span>Partenaires</span></a>
                         </li>
                     </ul>
                 </div>

@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AISOE - Organes</title>
+    <title>AISOE - Faire le don</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -31,7 +30,7 @@
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
-<body class="index-page">
+<body class="contact-page">
 
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
@@ -45,11 +44,11 @@
                     <li><a href="index">Acceuil<br></a></li>
                     <li><a href="evenement">Evenement</a></li>
                     <li><a href="membre">Membres</a></li>
-                    <li class="dropdown"><a href="#" class="active"><span>Organisation</span> <i
+                    <li class="dropdown"><a href="#"><span>Organisation</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="historique">Historique</a></li>
-                            <li><a href="organe" class="active">Organes</a></li>
+                            <li><a href="organe">Organes</a></li>
                             <li><a href="activite">Activités</a></li>
                             <li><a href="temoignage">Temoignages</a></li>
                             <li><a href="galerie">Galerie</a></li>
@@ -68,13 +67,15 @@
     <main class="main">
 
         <!-- Page Title -->
-        <div class="page-title" data-aos="fade">
-            <div class="heading">
+        <div class="page-title">
+            <div class="heading bg-breadcrumb">
                 <div class="container">
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
-                            <h1>Organes de AISOE</h1>
-                            <p class="mb-0">Découvrez les différents organes qui composent l'organisation AISOE.</p>
+                            <h1>Faire le Don</h1>
+                            <p class="mb-0">AISOE est une initiative de solidarité étudiante qui soutient les étudiants vulnérables 
+                                dans la poursuite de leurs études. Nous sollicitons votre appui financier pour aider ces jeunes à surmonter leurs difficultés, 
+                                payer leurs frais académiques et continuer leur parcours avec dignité et espoir.</p>
                         </div>
                     </div>
                 </div>
@@ -82,68 +83,107 @@
             <nav class="breadcrumbs">
                 <div class="container">
                     <ol>
-                        <li><a href="index">Accueil</a></li>
-                        <li class="current">Organes</li>
+                        <li><a href="index">Acceuil</a></li>
+                        <li class="current">Faire le Don</li>
                     </ol>
                 </div>
             </nav>
         </div><!-- End Page Title -->
 
-        <!-- Course Details Section -->
-        <section id="course-details" class="course-details section">
-
+        <!-- Contact Section -->
+        <section id="contact" class="contact section py-5 light-background">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-                <div class="row">
-                    <div class="col-lg-12">
+                <div class="row gy-4">
 
-                        <!-- Course Header -->
-                        <div class="course-header" data-aos="fade-up" data-aos-delay="200">
-                            <div class="course-image">
-                                <img src="assets/img/aisoe_ac.jpg" alt="Course Image" class="img-fluid">
+                    <div class="col-lg-6">
+                        <container class="container">
+                            <div class="row d-flex justify-content-center text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-0">Aujourd’hui, nous lançons un appel à votre générosité. Votre soutien financier nous aidera à payer les frais académiques, à renforcer l’accompagnement des étudiants vulnérables et à maintenir notre action de solidarité. Chaque contribution, 
+                                        petite ou grande, peut changer une vie et redonner espoir à un étudiant qui veut continuer son parcours.</p><br>
+                                        <i class="bi bi-check-circle flex-shrink-0"></i> <span class="ms-2"><strong>Après avoir effectué votre don, n’hésitez pas à contacter le coordonnateur au 90120838 afin de confirmer la réception de votre contribution.</strong></span>
+                                </div>
                             </div>
-                            <div class="course-info">
-                                <h2>Organes de AISOE</h2>
+                        </container>
+                    </div><!-- End Contact Form -->
+
+                    <div class="col-lg-6">
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                            <i class="bi bi-phone flex-shrink-0"></i>
+                            <div>
+                                <h3>Don par smartphone / Airtel Money</h3>
+                                <p>+243 981 418 835</p>
                             </div>
-                        </div><!-- End Course Header -->
+                        </div><!-- End Info Item -->
 
-                        <!-- Course Content -->
-                        <div class="course-content" data-aos="fade-up" data-aos-delay="300">
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                            <i class="bi bi-credit-card-fill flex-shrink-0"></i>
+                            <div>
+                                <h3>Don par carte bancaire</h3>
+                                <p> 0008817 BD1291 0091</p>
+                            </div>
+                        </div><!-- End Info Item -->
 
-                            <table class="organe-table">
-                                <thead>
-                                    <tr>
-                                        <th>Organe</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Conseil d'Administration</td>
-                                        <td>Le conseil d'administration est l'organe de direction de l'organisation.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Comité Scientifique</td>
-                                        <td>Le comité scientifique est responsable de la supervision des activités
-                                            scientifiques.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Section des Membres</td>
-                                        <td>La section des membres est responsable de la gestion des adhésions et de la
-                                            communication avec les membres.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                            <i class="bi bi-cash-coin flex-shrink-0"></i>
+                            <div>
+                                <h3>Don par argent liquide / dépôt au bureau : </h3>
+                                <p>Contacter le coordinateur sur 0979888751</p>
+                            </div>
+                        </div><!-- End Info Item -->
 
-                        </div><!-- End Course Content -->
                     </div>
 
                 </div>
 
             </div>
 
-        </section><!-- /Course Details Section -->
+        </section><!-- /Contact Section -->
+
+        <section id="pricing" class="pricing section">
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Voici les raisons pour lesquelles vous devriez nous soutenir</h2>
+            </div>
+            <div class="container">
+
+                <div class="row gy-3">
+
+                    <div class="col-xl-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="pricing-item">
+                            <h3>Pourquoi nous soutenir ?</h3>
+                            <ul>
+                                <li>Pour aider les étudiants en difficulté financière.</li>
+                                <li>Pour éviter l’abandon des études.</li>
+                                <li>Pour soutenir et l’accompagnement social.</li>
+                                <li>Pour investir dans l’avenir des jeunes</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Faire un don</a>
+                            </div>
+                        </div>
+                    </div><!-- End Pricing Item -->
+
+                    <div class="col-xl-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pricing-item featured">
+                            <h3>À quoi servira votre don ?</h3>
+                            <ul>
+                                <li>Paiement des frais académiques.</li>
+                                <li>Soutien aux étudiants vulnérables.</li>
+                                <li>Accompagnement psychologique et moral.</li>
+                                <li>Renforcement du fonds de solidarité AISOE.</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Faire un don</a>
+                            </div>
+                        </div>
+                    </div><!-- End Pricing Item -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Pricing Section -->
 
     </main>
 
@@ -164,8 +204,7 @@
                         <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                                 class="bi bi-facebook"></i></a>
                         <a href=""><i class="bi bi-youtube"></i></a>
-                        <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
-                                class="bi bi-tiktok"></i></a>
+                        <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i class="bi bi-tiktok"></i></a>
                         <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"
                             target="_blank"><i class="bi bi-linkedin"></i></a>
                     </div>
@@ -182,13 +221,12 @@
                     </ul>
                 </div>
 
-
                 <div class="col-lg-6 col-md-12 footer-newsletter">
                     <h4>Notre Newsletter</h4>
                     <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos
                         initiatives en faveur des étudiants</p>
                     <form action="code.php" method="post">
-                        <div class="newsletter-form"><input type="email" name="email"><input type="submit" name="newslatter"></div>
+                        <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
                     </form>
                 </div>
 
@@ -204,6 +242,7 @@
         </div>
 
     </footer>
+
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i

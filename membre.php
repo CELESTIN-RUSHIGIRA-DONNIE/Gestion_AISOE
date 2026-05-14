@@ -60,7 +60,7 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" href="login">Connexion</a>
+            <a class="btn-getstarted" href="don"><i class="bi bi-currency-dollar"></i> Faire un don</a>
 
         </div>
     </header>
@@ -74,7 +74,7 @@
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
                             <h1>Membres</h1>
-                            <p class="mb-0">Découvrez les membres de notre organisation et leurs contributions.</p>
+                            <p class="mb-0">Découvrez les membres de notre organisation.</p>
                         </div>
                     </div>
                 </div>

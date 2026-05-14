@@ -60,7 +60,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="login">Connexion</a>
+      <a class="btn-getstarted" href="don"><i class="bi bi-currency-dollar"></i> Faire un don</a>
 
     </div>
   </header>

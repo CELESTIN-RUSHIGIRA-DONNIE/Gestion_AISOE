@@ -195,8 +195,7 @@
                         initiatives en
                         faveur des étudiants</p>
                     <form action="code.php" method="post">
-                        <div class="newsletter-form"><input type="email" name="email"><input type="submit"
-                                name="newslatter"></div>
+                        <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
                     </form>
                 </div>
 

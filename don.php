@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AISOE - Faire le don</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>AISOE - Faire un don</title>
+    <meta name="description" content="AISOE est une initiative de solidarité étudiante qui soutient les étudiants vulnérables dans la poursuite de leurs études. Nous sollicitons votre appui financier pour aider ces jeunes à surmonter leurs difficultés, payer leurs frais académiques et continuer leur parcours avec dignité et espoir.">
+    <meta name="keywords" content="Don, Solidarité étudiante, Soutien financier, Étudiants vulnérables, AISOE, Poursuite des études, Frais académiques, Accompagnement social, Investir dans l'avenir des jeunes">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -72,7 +72,7 @@
                 <div class="container">
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
-                            <h1>Faire le Don</h1>
+                            <h1>Faire un Don</h1>
                             <p class="mb-0">AISOE est une initiative de solidarité étudiante qui soutient les étudiants vulnérables
                                 dans la poursuite de leurs études. Nous sollicitons votre appui financier pour aider ces jeunes à surmonter leurs difficultés,
                                 payer leurs frais académiques et continuer leur parcours avec dignité et espoir.</p>
@@ -84,7 +84,7 @@
                 <div class="container">
                     <ol>
                         <li><a href="index">Acceuil</a></li>
-                        <li class="current">Faire le Don</li>
+                        <li class="current">Faire un Don</li>
                     </ol>
                 </div>
             </nav>

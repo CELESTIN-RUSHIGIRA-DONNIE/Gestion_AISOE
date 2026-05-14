@@ -6,8 +6,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>AISOE - Evenements</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Découvrez nos activités, nos campagnes de sensibilisation, nos collectes de fonds et nos rencontres de solidarité en faveur des étudiants en difficulté. Chaque événement est une occasion de renforcer l’entraide, de mobiliser la communauté universitaire et de soutenir ceux qui veulent poursuivre leurs études.">
+  <meta name="keywords" content="Evenements, Activités, Campagnes de sensibilisation, Collectes de fonds, Rencontres de solidarité, Étudiants en difficulté, AISOE, Poursuite des études, Soutien financier, Accompagnement social, Mobilisation communautaire">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">

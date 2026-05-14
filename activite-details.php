@@ -152,7 +152,7 @@
                                             <div class="col-md-12">
                                                 <p><?= $post_row['description']; ?></p>
                                             </div>
-                                             <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <p><?= $post_row['detail']; ?></p>
                                             </div>
                                         </div>
@@ -170,33 +170,21 @@
                                     <!-- Pricing Card -->
                                     <div class="pricing-card">
                                         <div class="price">
-                                            <span class="currency">$</span>
-                                            <span class="amount">199</span>
-                                            <span class="period">/course</span>
+                                            <h3>Pourquoi nous soutenir ?</h3>
                                         </div>
-                                        <div class="original-price">$299</div>
 
                                         <div class="course-features">
-                                            <div class="feature">
-                                                <i class="bi bi-clock"></i>
-                                                <span>40 hours of content</span>
-                                            </div>
-                                            <div class="feature">
-                                                <i class="bi bi-trophy"></i>
-                                                <span>Certificate of completion</span>
-                                            </div>
-                                            <div class="feature">
-                                                <i class="bi bi-phone"></i>
-                                                <span>Mobile and desktop access</span>
-                                            </div>
-                                            <div class="feature">
-                                                <i class="bi bi-infinity"></i>
-                                                <span>Lifetime access</span>
-                                            </div>
+                                            <ul>
+                                                <li>Pour aider les étudiants en difficulté financière.</li>
+                                                <li>Pour éviter l’abandon des études.</li>
+                                                <li>Pour soutenir et l’accompagnement social.</li>
+                                                <li>Pour investir dans l’avenir des jeunes</li>
+                                            </ul>
                                         </div>
-                                        <button class="btn-preview">Faire un Don</button>
+                                        <a href="don" class="btn-preview">Faire un Don</a>
                                     </div><!-- End Pricing Card -->
                                 </div><!-- End Course Sidebar -->
+
 
                             </div>
 

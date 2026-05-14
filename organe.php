@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AISOE - Organes</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Découvrez les différents organes qui composent l'organisation AISOE.">
+    <meta name="keywords" content="Organes, AISOE, Structure organisationnelle, Leadership, Gouvernance">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

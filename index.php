@@ -10,8 +10,8 @@ include "admin/conf/dbcon.php";
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>AISOE - Accueil</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="AISOE (Aide Sociale Étudiants) est une initiative étudiante née au sein de la Faculté de Médecine et Santé Communautaire de l’UEA, soutient les étudiants en difficulté financière pour qu’aucun ne soit contraint d’abandonner ses études.">
+  <meta name="keywords" content="AISOE, Aide Sociale Étudiants, Solidarité étudiante, Soutien financier, Étudiants en difficulté, Poursuite des études, Accompagnement social, Mobilisation communautaire, Université Évangélique en Afrique, UEA, Bukavu, RDC">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -334,10 +334,10 @@ include "admin/conf/dbcon.php";
                   aut aut
                 </p>
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-envelope-fill"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href=""><i class="bi bi-whatsapp"></i></a>
                 </div>
               </div>
             </div>
@@ -354,10 +354,10 @@ include "admin/conf/dbcon.php";
                   temporibus
                 </p>
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-envelope-fill"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href=""><i class="bi bi-whatsapp"></i></a>
                 </div>
               </div>
             </div>
@@ -373,10 +373,10 @@ include "admin/conf/dbcon.php";
                   Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
                 </p>
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-envelope-fill"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://wa.me/+243812345678" target="_blank"><i class="bi bi-whatsapp"></i></a>
                 </div>
               </div>
             </div>

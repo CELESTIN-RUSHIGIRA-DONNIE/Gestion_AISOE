@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>AISOE - Contact</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Pour toute information complémentaire nous concernant, n’hésitez pas à nous contacter. Nous serons heureux de vous fournir tous les renseignements dont vous avez besoin.">
+  <meta name="keywords" content="Contact, AISOE, Information, Soutien aux étudiants, Solidarité étudiante, Poursuite des études, Accompagnement social">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">

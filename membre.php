@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AISOE - Membres</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Découvrez les membres de notre organisation.">
+    <meta name="keywords" content="Membres, AISOE, Étudiants, Solidarité, Soutien">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AISOE - Historique</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Découvrez l'histoire et les moments clés de AISOE.">
+    <meta name="keywords" content="Historique, AISOE, Histoire de l'organisation, Moments clés, Fondation, Évolution, Réalisations, AISOE asbl, Solidarité étudiante, Soutien aux étudiants, Poursuite des études, Accompagnement social">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

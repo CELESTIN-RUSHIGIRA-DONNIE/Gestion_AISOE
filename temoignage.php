@@ -9,8 +9,8 @@ include 'admin/conf/dbcon.php'; ?>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AISOE - Temoignages</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Découvrez les témoignages inspirants de nos bénéficiaires, partenaires et membres de la communauté AISOE. Ces histoires authentiques illustrent l’impact positif de notre initiative de solidarité étudiante, mettant en lumière les défis surmontés, les réussites académiques et les transformations personnelles rendues possibles grâce à notre soutien. Plongez dans ces récits émouvants qui témoignent de la force de l’entraide et de la résilience des étudiants en difficulté.">
+    <meta name="keywords" content="Temoignages, AISOE, Étudiants, Solidarité, Soutien, Histoires inspirantes, Bénéficiaires, Partenaires, Communauté AISOE, Impact positif, Initiative de solidarité étudiante, Défis surmontés, Réussites académiques, Transformations personnelles, Entraide, Résilience des étudiants en difficulté">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

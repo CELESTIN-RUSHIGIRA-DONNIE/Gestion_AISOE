@@ -8,8 +8,8 @@ session_start();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>AISOE - Login</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Connectez-vous à votre compte AISOE pour accéder à nos services de soutien aux étudiants en difficulté. En vous connectant, vous pourrez bénéficier d'une assistance financière, d'un accompagnement social et de ressources pour poursuivre vos études avec succès. Rejoignez notre communauté solidaire et accédez à un avenir prometteur grâce à AISOE.">
+  <meta name="keywords" content="Login, Compte, AISOE, Soutien aux étudiants, Solidarité étudiante, Poursuite des études, Accompagnement social">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">

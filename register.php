@@ -8,8 +8,8 @@ session_start();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AISOE - Register</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Inscrivez-vous pour rejoindre notre communauté solidaire et bénéficier de notre soutien aux étudiants en difficulté.">
+    <meta name="keywords" content="Inscription, Enregistrement, AISOE, Soutien aux étudiants, Solidarité étudiante">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AISOE - Activités</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Découvrez les activités de l'organisation AISOE et participez à notre mission de soutien aux étudiants en difficulté.">
+    <meta name="keywords" content="Activités, AISOE, Soutien aux étudiants, Solidarité étudiante, Poursuite des études, Accompagnement social">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

@@ -261,8 +261,7 @@
         <div class="container copyright text-center mt-4">
             <p>© <span>AISOE</span> <strong class="px-1 sitename"> Tous droits réservés.</strong>
             <div class="credits">
-                Conçu par <a href="https://bootstrapmade.com/">CELESTIN RUSHIGIRA DONNIE</a> | <a
-                    href="https://bootstrapmade.com/tools/">0979599841</a>
+                Conçu par <a href="mailto:celestinrushigiradonnie@gmail.com">CELESTIN RUSHIGIRA DONNIE</a> | <a href="tel:0979599841">0979599841</a>
             </div>
         </div>
 

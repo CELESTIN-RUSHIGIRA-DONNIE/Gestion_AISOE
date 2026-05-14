@@ -73,8 +73,8 @@
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
                             <h1>Faire le Don</h1>
-                            <p class="mb-0">AISOE est une initiative de solidarité étudiante qui soutient les étudiants vulnérables 
-                                dans la poursuite de leurs études. Nous sollicitons votre appui financier pour aider ces jeunes à surmonter leurs difficultés, 
+                            <p class="mb-0">AISOE est une initiative de solidarité étudiante qui soutient les étudiants vulnérables
+                                dans la poursuite de leurs études. Nous sollicitons votre appui financier pour aider ces jeunes à surmonter leurs difficultés,
                                 payer leurs frais académiques et continuer leur parcours avec dignité et espoir.</p>
                         </div>
                     </div>
@@ -97,16 +97,19 @@
                 <div class="row gy-4">
 
                     <div class="col-lg-6">
-                        <container class="container">
-                            <div class="row d-flex justify-content-center text-center">
-                                <div class="col-lg-12">
-                                    <p class="mb-0">Aujourd’hui, nous lançons un appel à votre générosité. Votre soutien financier nous aidera à payer les frais académiques, à renforcer l’accompagnement des étudiants vulnérables et à maintenir notre action de solidarité. Chaque contribution, 
-                                        petite ou grande, peut changer une vie et redonner espoir à un étudiant qui veut continuer son parcours.</p><br>
-                                        <i class="bi bi-check-circle flex-shrink-0"></i> <span class="ms-2"><strong>Après avoir effectué votre don, n’hésitez pas à contacter le coordonnateur au 90120838 afin de confirmer la réception de votre contribution.</strong></span>
-                                </div>
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                            <i class="bi bi-check-circle flex-shrink-0"></i>
+                            <div>
+                                <p><strong>Après avoir effectué votre don, n’hésitez pas à contacter le coordonnateur au 90120838 afin de confirmer la réception de votre contribution.</strong></p>
                             </div>
-                        </container>
-                    </div><!-- End Contact Form -->
+                        </div>
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                            <p>
+                                Aujourd’hui, nous lançons un appel à votre générosité. Votre soutien financier nous aidera à payer les frais académiques, à renforcer l’accompagnement des étudiants vulnérables et à maintenir notre action de solidarité. Chaque contribution,
+                                petite ou grande, peut changer une vie et redonner espoir à un étudiant qui veut continuer son parcours.
+                            </p>
+                        </div>
+                    </div>
 
                     <div class="col-lg-6">
                         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">

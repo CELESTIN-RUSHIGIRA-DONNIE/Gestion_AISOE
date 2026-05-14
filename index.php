@@ -1,4 +1,7 @@
-<?php include "admin/conf/dbcon.php"; ?>
+<?php
+session_start(); 
+include "admin/conf/dbcon.php"; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -213,7 +216,7 @@
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="features-item">
               <!-- <i class="bi bi-eye" style="color: #ffbb2c;"></i> -->
-              <img src="assets/img/aisoe.jpg" alt="UEA BUKAVU" class="img-fluid" style="width: 50px; height: 50px;"> 
+              <img src="assets/img/aisoe.jpg" alt="UEA BUKAVU" class="img-fluid" style="width: 50px; height: 50px;">
               <h3><a href="" class="stretched-link">UEA BUKAVU</a></h3>
             </div>
           </div><!-- End Feature Item -->
@@ -425,8 +428,15 @@
           <h4>Notre Newsletter</h4>
           <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos initiatives en
             faveur des étudiants</p>
+          <?php if (isset($_SESSION['message'])) { ?>
+            <div class="alert alert-<?php echo $_SESSION['msg_type']; ?> alert-dismissible fade show mb-3" role="alert">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <?php echo $_SESSION['message']; ?>
+            </div>
+            <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
+          <?php } ?>
           <form action="code.php" method="post">
-           <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
+            <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
           </form>
         </div>
 

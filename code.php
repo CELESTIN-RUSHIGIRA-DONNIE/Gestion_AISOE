@@ -22,7 +22,8 @@ if (isset($_POST["send_temoignage"])) {
 
     // Vérifier si un fichier a été envoyé
     if (empty($_FILES['photo']['name'])) {
-        $_SESSION['toastr'] = ['type' => 'error', 'message' => 'Veuillez choisir une Photo'];
+        $_SESSION['message'] = "Veuillez choisir une Photo";
+        $_SESSION['msg_type'] = "danger";
         header("Location: temoignage");
         exit;
     }
@@ -33,7 +34,8 @@ if (isset($_POST["send_temoignage"])) {
 
     // Vérifier l’erreur d’upload
     if ($error !== UPLOAD_ERR_OK) {
-        $_SESSION['toastr'] = ['type' => 'error', 'message' => 'Erreur lors de l\'upload de l\'image (code : ' . $error . ').'];
+        $_SESSION['message'] = "Erreur lors de l\'upload de l\'image (code : " . $error . ").";
+        $_SESSION['msg_type'] = "danger";
         header("Location: temoignage");
         exit;
     }
@@ -43,7 +45,8 @@ if (isset($_POST["send_temoignage"])) {
     $file_extension = strtolower(pathinfo($image, PATHINFO_EXTENSION));
 
     if (!in_array($file_extension, $allowed_extensions)) {
-        $_SESSION['toastr'] = ['type' => 'error', 'message' => 'Format d\'image non valide.'];
+        $_SESSION['message'] = "Format d\'image non valide.";
+        $_SESSION['msg_type'] = "danger";
         header("Location: temoignage");
         exit;
     }
@@ -100,14 +103,20 @@ if (isset($_POST["send_temoignage"])) {
                 error_log("❌ Email échoué: {$mail->ErrorInfo}");  // Log seulement
             }
 
-            $_SESSION['toastr'] = ['type' => 'success', 'message' => '✅ Témoignage enregistré et notifié !'];
+
+            $_SESSION['message'] = "✅ Témoignage enregistré et notifié !";
+            $_SESSION['msg_type'] = "success";
+            header("Location: temoignage");
+            exit;
         } else {
-            $_SESSION['toastr'] = ['type' => 'error', 'message' => 'Enregistrement OK, mais échec de l\'upload de l\'image.'];
+            $_SESSION['message'] = "Enregistrement OK, mais échec de l'upload de l'image.";
+            $_SESSION['msg_type'] = "danger";
         }
         header("Location: index");  // ou index.php
         exit;
     } else {
-        $_SESSION['toastr'] = ['type' => 'error', 'message' => 'Echec de l\'enregistrement en base.'];
+        $_SESSION['message'] = "Echec de l'enregistrement en base.";
+        $_SESSION['msg_type'] = "danger";
         header("Location: testimonials");
         exit;
     }
@@ -120,17 +129,20 @@ if (isset($_POST["send_temoignage"])) {
 
     if (mysqli_num_rows($check_query_run) > 0) {
         $_SESSION['message'] = "Vous êtes déjà abonné.";
+        $_SESSION['msg_type'] = "danger";
         header("Location: index");
-        exit(0);
+        exit;
     } else {
         // Insérer le nouvel abonné
         $insert_query = "INSERT INTO newslatter (email) VALUES ('$email')";
         if (mysqli_query($con, $insert_query)) {
             $_SESSION['message'] = "Abonnement réussi. Merci de vous être abonné!";
+            $_SESSION['msg_type'] = "success";
             header("Location: index");
             exit(0);
         } else {
             $_SESSION['message'] = "Erreur lors de l'abonnement. Veuillez réessayer.";
+            $_SESSION['msg_type'] = "danger";
             header("Location: index");
             exit(0);
         }

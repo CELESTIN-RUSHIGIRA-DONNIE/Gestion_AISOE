@@ -1,4 +1,6 @@
-<?php include 'admin/conf/dbcon.php'; ?>
+<?php 
+session_start();
+include 'admin/conf/dbcon.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -198,6 +200,13 @@
                     </div>
 
                     <div class="col-lg-8">
+                        <?php if (isset($_SESSION['message'])) { ?>
+                            <div class="alert alert-<?php echo $_SESSION['msg_type']; ?> alert-dismissible fade show mb-3" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?php echo $_SESSION['message']; ?>
+                            </div>
+                            <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
+                        <?php } ?>
                         <form action="code.php" method="post" enctype="multipart/form-data">
                             <div class="row gy-4">
 

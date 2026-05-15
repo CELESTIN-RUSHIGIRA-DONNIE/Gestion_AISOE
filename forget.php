@@ -1,12 +1,15 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AISOE - Faire un don</title>
-    <meta name="description" content="AISOE est une initiative de solidarité étudiante qui soutient les étudiants vulnérables dans la poursuite de leurs études. Nous sollicitons votre appui financier pour aider ces jeunes à surmonter leurs difficultés, payer leurs frais académiques et continuer leur parcours avec dignité et espoir.">
-    <meta name="keywords" content="Don, Solidarité étudiante, Soutien financier, Étudiants vulnérables, AISOE, Poursuite des études, Frais académiques, Accompagnement social, Investir dans l'avenir des jeunes">
+    <title>AISOE - Reset Password</title>
+    <meta name="description" content="Connectez-vous à votre compte AISOE pour accéder à nos services de soutien aux étudiants en difficulté. En vous connectant, vous pourrez bénéficier d'une assistance financière, d'un accompagnement social et de ressources pour poursuivre vos études avec succès. Rejoignez notre communauté solidaire et accédez à un avenir prometteur grâce à AISOE.">
+    <meta name="keywords" content="Login, Compte, AISOE, Soutien aux étudiants, Solidarité étudiante, Poursuite des études, Accompagnement social">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -30,7 +33,7 @@
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
-<body class="contact-page">
+<body class="index-page">
 
     <div class="container-fluid bg-danger px-5 d-none d-lg-block">
         <div class="row gx-0">
@@ -83,7 +86,7 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" href="don"><i class="bi bi-currency-dollar"></i> Faire un don</a>
+            <a class="btn-getstarted" href="register">Créer Compte</a>
 
         </div>
     </header>
@@ -91,127 +94,52 @@
     <main class="main">
 
         <!-- Page Title -->
-        <div class="page-title">
-            <div class="heading bg-breadcrumb">
+        <div class="page-title" data-aos="fade">
+            <div class="heading bg-fac_med">
                 <div class="container">
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
-                            <h1>Faire un Don</h1>
-                            <p class="mb-0">AISOE est une initiative de solidarité étudiante qui soutient les étudiants vulnérables
-                                dans la poursuite de leurs études. Nous sollicitons votre appui financier pour aider ces jeunes à surmonter leurs difficultés,
-                                payer leurs frais académiques et continuer leur parcours avec dignité et espoir.</p>
+                            <h1>Réinitialiser votre mot de passe</h1>
+                            <p class="mb-0">Veuillez entrer votre adresse email pour recevoir les instructions de réinitialisation.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <nav class="breadcrumbs">
-                <div class="container">
-                    <ol>
-                        <li><a href="index">Acceuil</a></li>
-                        <li class="current">Faire un Don</li>
-                    </ol>
-                </div>
-            </nav>
         </div><!-- End Page Title -->
+        <section id="features" class="features section light-background">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="rounded p-5">
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact section py-5 light-background">
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                                <!-- <h1 class="text-center mb-4">Connectez-vous</h1> -->
+                                <form action="password-reset.php" method="post">
+                                    <?php if (isset($_SESSION['message'])) { ?>
+                                        <div class="alert alert-<?php echo $_SESSION['msg_type']; ?> alert-dismissible fade show mb-3" role="alert">
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <?php echo $_SESSION['message']; ?>
+                                        </div>
+                                        <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
+                                    <?php } ?>
 
-                <div class="row gy-4">
-
-                    <div class="col-lg-6">
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                            <i class="bi bi-check-circle flex-shrink-0"></i>
-                            <div>
-                                <p><strong>Après avoir effectué votre don, n’hésitez pas à contacter le coordonnateur au 90120838 afin de confirmer la réception de votre contribution.</strong></p>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email address</label>
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Entrer votre email" required>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" name="forget" class="btn btn-danger btn-block">Réinitialiser</button>
+                                    </div>
+                                    <div class="mt-3 text-center">
+                                        <i class="bi bi-person"></i> <span> J'ai mon mot de passe, <a href="login">Se connecter</a></span>
+                                    </div>
+                                </form>
                             </div>
-                        </div>
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                            <p>
-                                Aujourd’hui, nous lançons un appel à votre générosité. Votre soutien financier nous aidera à payer les frais académiques, à renforcer l’accompagnement des étudiants vulnérables et à maintenir notre action de solidarité. Chaque contribution,
-                                petite ou grande, peut changer une vie et redonner espoir à un étudiant qui veut continuer son parcours.
-                            </p>
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                            <i class="bi bi-phone flex-shrink-0"></i>
-                            <div>
-                                <h3>Don par smartphone / Airtel Money</h3>
-                                <p>+243 981 418 835</p>
-                            </div>
-                        </div><!-- End Info Item -->
-
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                            <i class="bi bi-credit-card-fill flex-shrink-0"></i>
-                            <div>
-                                <h3>Don par carte bancaire</h3>
-                                <p> 0008817 BD1291 0091</p>
-                            </div>
-                        </div><!-- End Info Item -->
-
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
-                            <i class="bi bi-cash-coin flex-shrink-0"></i>
-                            <div>
-                                <h3>Don par argent liquide / dépôt au bureau : </h3>
-                                <p>Contacter le coordinateur sur 0979888751</p>
-                            </div>
-                        </div><!-- End Info Item -->
-
-                    </div>
-
                 </div>
-
             </div>
-
-        </section><!-- /Contact Section -->
-
-        <section id="pricing" class="pricing section">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Voici les raisons pour lesquelles vous devriez nous soutenir</h2>
-            </div>
-            <div class="container">
-
-                <div class="row gy-3">
-
-                    <div class="col-xl-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="pricing-item">
-                            <h3>Pourquoi nous soutenir ?</h3>
-                            <ul>
-                                <li>Pour aider les étudiants en difficulté financière.</li>
-                                <li>Pour éviter l’abandon des études.</li>
-                                <li>Pour soutenir et l’accompagnement social.</li>
-                                <li>Pour investir dans l’avenir des jeunes</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Faire un don</a>
-                            </div>
-                        </div>
-                    </div><!-- End Pricing Item -->
-
-                    <div class="col-xl-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="pricing-item featured">
-                            <h3>À quoi servira votre don ?</h3>
-                            <ul>
-                                <li>Paiement des frais académiques.</li>
-                                <li>Soutien aux étudiants vulnérables.</li>
-                                <li>Accompagnement psychologique et moral.</li>
-                                <li>Renforcement du fonds de solidarité AISOE.</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Faire un don</a>
-                            </div>
-                        </div>
-                    </div><!-- End Pricing Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Pricing Section -->
-
+        </section>
     </main>
 
     <footer id="footer" class="footer position-relative dark-background">
@@ -250,8 +178,8 @@
 
                 <div class="col-lg-6 col-md-12 footer-newsletter">
                     <h4>Notre Newsletter</h4>
-                    <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos
-                        initiatives en faveur des étudiants</p>
+                    <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos initiatives en
+                        faveur des étudiants</p>
                     <form action="code.php" method="post">
                         <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
                     </form>
@@ -268,7 +196,6 @@
         </div>
 
     </footer>
-
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i

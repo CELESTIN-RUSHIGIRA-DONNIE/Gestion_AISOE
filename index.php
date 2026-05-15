@@ -1,6 +1,6 @@
 <?php
-session_start(); 
-include "admin/conf/dbcon.php"; 
+session_start();
+include "admin/conf/dbcon.php";
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +51,29 @@ include "admin/conf/dbcon.php";
 </head>
 
 <body class="index-page">
+  <div class="container-fluid bg-danger px-5 d-none d-lg-block">
+    <div class="row gx-0">
+      <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
+                class="bi bi-facebook"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
+            href="https://www.youtube.com/@etoiledelouangeUEA" target="_blank"><i class="bi bi-youtube"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
+              class="bi bi-tiktok"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
+            href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false" target="_blank"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center text-lg-end">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <a href="register"><small class="me-3 text-light"><i class="fa fa-user me-2"></i>Register</small></a>
+          <a href="login"><small class="me-3 text-light"><i
+                class="fa fa-sign-in-alt me-2"></i>Login</small></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
@@ -71,7 +94,7 @@ include "admin/conf/dbcon.php";
               <li><a href="organe">Organes</a></li>
               <li><a href="activite">Activités</a></li>
               <li><a href="temoignage">Temoignages</a></li>
-              <li><a href="galerie">Galerie</a></li>
+              <li><a href="login">Login</a></li>
             </ul>
           </li>
           <li><a href="contact">Contact</a></li>
@@ -110,7 +133,7 @@ include "admin/conf/dbcon.php";
         <div class="row gy-4">
 
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/aisoe.jpg" class="img-fluid" alt="">
+            <img src="assets/img/equipe.jpg" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
@@ -143,10 +166,9 @@ include "admin/conf/dbcon.php";
 
 
     <!-- But, Objectifs, Mission, Fonctionnements Section -->
-    <section id="why-us" class="section why-us light-background">
+    <section id="why-us" class="section why-us">
 
       <div class="container">
-
         <div class="row gy-4">
           <div class="col-xl-4 bg-danger" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
@@ -183,7 +205,7 @@ include "admin/conf/dbcon.php";
                 </div>
               </div><!-- End Icon Box -->
 
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+              <div class="col-xl-4 bg-danger" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                   <i class="bi bi-gear"></i>
                   <h4>Fonctionnements</h4>

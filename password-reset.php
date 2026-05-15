@@ -15,7 +15,8 @@ require __DIR__ . '/PHPMailer/src/SMTP.php';
 
 
 
-function send_password_reset($get_name, $get_email, $token) {
+function send_password_reset($get_name, $get_email, $token)
+{
     // Implémentation de l'envoi de l'email de réinitialisation
     $mail = new PHPMailer(true);
     $mail->isSMTP();
@@ -28,7 +29,7 @@ function send_password_reset($get_name, $get_email, $token) {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom('aidesocialeetudiantaisoe@gmail.com',$get_name);
+    $mail->setFrom('aidesocialeetudiantaisoe@gmail.com', $get_name);
     $mail->addAddress($get_email);
 
     $mail->isHTML(true);
@@ -78,16 +79,60 @@ if (isset($_POST['forget'])) {
         header('Location: forget');
         exit;
     }
+} 
+
+
+else if (isset($_POST['change_password'])) {
+    $email = trim($_POST['email']);
+    $new_password = trim($_POST['new_password']);
+    $confirm_new_password = trim($_POST['confirm_new_password']);
+    $token = trim($_POST['token']);
+
+    if (!empty($token) && !empty($email) && !empty($new_password) && !empty($confirm_new_password)) {
+        if ($new_password === $confirm_new_password) {
+            // Vérifier token + email
+            $stmt = $con->prepare("SELECT id FROM membre WHERE email=? AND verify_token=? LIMIT 1");
+            $stmt->bind_param("ss", $email, $token);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+                $stmt = $con->prepare("UPDATE membre SET password=? WHERE email=? AND verify_token=?");
+                $stmt->bind_param("sss", $hashed_password, $email, $token);
+                if ($stmt->execute()) {
+                    $new_token = bin2hex(random_bytes(50));
+                    $stmt = $con->prepare("UPDATE membre SET verify_token=? WHERE email=?");
+                    $stmt->bind_param("ss", $new_token, $email);
+                    $stmt->execute();
+
+                    $_SESSION['message'] = "Votre mot de passe a été changé avec succès.";
+                    $_SESSION['msg_type'] = "success";
+                    header("Location: login.php");
+                    exit;
+                } else {
+                    $_SESSION['message'] = "Erreur lors de la mise à jour.";
+                    $_SESSION['msg_type'] = "danger";
+                    header("Location: change-password.php");
+                }
+            } else {
+                $_SESSION['message'] = "Token ou email invalide.";
+                $_SESSION['msg_type'] = "danger";
+                header("Location: change-password.php");
+                exit;
+            }
+        } else {
+            $_SESSION['message'] = "Les mots de passe ne correspondent pas.";
+            $_SESSION['msg_type'] = "danger";
+            header("Location: change-password.php");
+            exit;
+        }
+    } else {
+        $_SESSION['message'] = "Tous les champs sont requis.";
+        $_SESSION['msg_type'] = "danger";
+        header("Location: change-password.php");
+        exit;
+    }
+
 }
 
-else if($_POST['change_password']) {
-
-$email = mysqli_real_escape_string($con, $_POST['email']);
-$new_password = mysqli_real_escape_string($con, $_POST['new_password']);
-$confirm_new_password = mysqli_real_escape_string($con, $_POST['confirm_new_password']);
-
-$token = mysqli_real_escape_string($con, $_GET['token']);
-    // Implémentation de la logique de changement de mot de passe
-    // Vérifier le token, l'email, et mettre à jour le mot de passe dans la base de données
-    // Afficher un message de succès ou d'erreur selon le résultat
-}

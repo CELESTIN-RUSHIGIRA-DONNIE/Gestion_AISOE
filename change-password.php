@@ -114,20 +114,20 @@ session_start();
                                     </div>
                                     <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
                                 <?php } ?>
-                                <form action="password-reset.php" method="post">
+                                <form action="password-reset.php" method="POST">
                                     <input type="hidden" name="token" value="<?php if(isset($_GET['token'])) { echo $_GET['token']; } ?>">
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email address</label>
-                                        <input type="email" name="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email']; } ?>" class="form-control" id="email" placeholder="Entrer votre email" required>
+                                        <label class="form-label">Email address</label>
+                                        <input type="email" name="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email']; } ?>" class="form-control" placeholder="Entrer votre email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="new_password" class="form-label">Nouveau Password</label>
-                                        <input type="password" name="new_password" class="form-control" id="new_password"
+                                        <label class="form-label">Nouveau Password</label>
+                                        <input type="password" name="new_password" class="form-control"
                                             placeholder="Enter votre mot de passe" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="confirm_password" class="form-label">Confirmer le nouveau Password</label>
-                                        <input type="password" name="confirm_new_password" class="form-control" id="confirm_password"
+                                        <label class="form-label">Confirmer le nouveau Password</label>
+                                        <input type="password" name="confirm_new_password" class="form-control"
                                             placeholder="Retapez le mot de passe" required>
                                     </div>
                                     <div class="d-grid">

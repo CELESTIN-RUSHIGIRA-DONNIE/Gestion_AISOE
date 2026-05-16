@@ -115,10 +115,6 @@
 
         <!-- About Section -->
         <section id="about" class="about section light-background">
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Lire L'Histoire de AISOE</h2>
-            </div><!-- End Section Title -->
             <div class="container">
 
                 <div class="row gy-4">
@@ -199,7 +195,7 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="assets/img/illustration/illustration-13.webp" alt=""
+                                        <img src="assets/img/fac_med.jpg" alt=""
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -254,7 +250,7 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="assets/img/illustration/illustration-12.webp" alt=""
+                                        <img src="assets/img/aisoe_im.jpg" alt=""
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -278,7 +274,7 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="assets/img/illustration/illustration-10.webp" alt=""
+                                        <img src="assets/img/equipe.jpg" alt=""
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -336,7 +332,7 @@
                     <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos
                         initiatives en faveur des étudiants</p>
                     <form action="code.php" method="post">
-                        <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
+                        <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email" required><input type="submit" name="newslatter"></div>
                     </form>
                 </div>
 

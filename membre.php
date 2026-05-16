@@ -29,6 +29,67 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        /* Style des cartes */
+        .course-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Ombre douce */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            /* Ombre plus forte au hover */
+        }
+
+        /* Image */
+        .image-box {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contenu */
+        .course-content {
+            padding: 15px;
+        }
+
+        .course-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Bouton Lire plus */
+        .course-content .category {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #db3030;
+            /* Rouge Bootstrap */
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-content .category:hover {
+            background-color: #db3030;
+            /* Rouge plus foncé au hover */
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body class="index-page">
@@ -113,44 +174,73 @@
             </nav>
         </div><!-- End Page Title -->
 
-        <!-- Trainers Section -->
-        <section id="trainers" class="section trainers">
 
-            <div class="container">
+        <section id="testimonials" class="testimonials section light-background">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+                        {
+                            "loop": true,
+                            "speed": 600,
+                            "autoplay": {
+                                "delay": 5000
+                            },
+                            "slidesPerView": "auto",
+                            "pagination": {
+                                "el": ".swiper-pagination",
+                                "type": "bullets",
+                                "clickable": true
+                            },
+                            "breakpoints": {
+                                "320": {
+                                    "slidesPerView": 1,
+                                    "spaceBetween": 20
+                                },
+                                "1200": {
+                                    "slidesPerView": 3,
+                                    "spaceBetween": 30
+                                }
+                            }
+                        }
+                    </script>
 
-                <div class="row gy-5">
-                    <?php
+                    <div class="swiper-wrapper">
+                                           <?php
                     $homeactivite = "SELECT * FROM membre WHERE status= 1 ORDER BY created_at DESC LIMIT 6";
                     $homeactivite_run = mysqli_query($con, $homeactivite);
                     if (mysqli_num_rows($homeactivite_run) > 0) {
                         foreach ($homeactivite_run as $homeItems) {
                     ?>
-                            <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
-                                <div class="member-img">
-                                    <img src="admin/assets/uploads/<?= $homeItems['photo']; ?>" class="img-fluid" alt="">
-                                    <div class="social">
-                                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                        <a href="#"><i class="bi bi-facebook"></i></a>
-                                        <a href="#"><i class="bi bi-instagram"></i></a>
-                                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                                <div class="swiper-slide">
+                                    <div class="course-item">
+                                        <div class="image-box">
+                                            <img src="admin/assets/uploads/<?= $homeItems['photo']; ?>"
+                                                alt="<?= $homeItems['nom']; ?>"
+                                                class="img-fluid image-box-img">
+                                        </div>
+                                        <div class="course-content">
+                                            <h3><?= $homeItems['nom'] .' '. $homeItems['postnom']; ?></h3>
+                                            <p class="description"><?= $homeItems['fonction']; ?></p>
+                                            <div class="trainer d-flex justify-content-between align-items-center">
+                                                <a href="membre-details.php?id=<?= $homeItems['id']; ?>" class="category">Lire plus</a>
+                                                <div class="trainer-rank d-flex align-items-center">
+                                                    <i class="bi bi-calendar-fill"></i>&nbsp;
+                                                    <?= date('d/m/Y', strtotime($homeItems['created_at'])); ?>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="member-info text-center">
-                                    <h4><?= $homeItems['nom'] . ' ' . $homeItems['postnom']; ?></h4>
-                                    <span><?= $homeItems['fonction'] ?></span>
-                                    <p>Aliquam iure quaerat voluptatem praesentium possimus unde laudantium vel dolorum
-                                        distinctio dire flow</p>
-                                </div>
-                            </div>
-                    <?php
+                        <?php
+                            }
                         }
-                    }
-                    ?>
+                        ?>
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-
             </div>
+        </section>
 
-        </section><!-- /Trainers Section -->
 
     </main>
 
@@ -192,7 +282,7 @@
                     <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos
                         initiatives en faveur des étudiants</p>
                     <form action="code.php" method="post">
-                        <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
+                        <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email" required><input type="submit" name="newslatter"></div>
                     </form>
                 </div>
 

@@ -1,14 +1,13 @@
-<?php include "admin/conf/dbcon.php"; ?>
-
+<?php include('admin/conf/dbcon.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AISOE - Detail de l'évenement</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>AISOE - Membres</title>
+    <meta name="description" content="Découvrez les membres de notre organisation.">
+    <meta name="keywords" content="Membres, AISOE, Étudiants, Solidarité, Soutien">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -32,17 +31,76 @@
     <link href="assets/css/main.css" rel="stylesheet">
 
     <style>
+        /* Style des cartes */
+        .course-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Ombre douce */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            /* Ombre plus forte au hover */
+        }
+
+        /* Image */
         .image-box {
             width: 100%;
-            height: 250px;
+            height: 220px;
             overflow: hidden;
         }
 
-        .image-box-img {
+        .image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+        }
+
+        /* Contenu */
+        .course-content {
+            padding: 15px;
+        }
+
+        .course-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Bouton Lire plus */
+        .course-content .category {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #db3030;
+            /* Rouge Bootstrap */
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-content .category:hover {
+            background-color: #db3030;
+            /* Rouge plus foncé au hover */
+            color: #fff;
+        }
+
+        .member-photo {
+            width: 450px;
+            /* largeur fixe */
+            height: 450px;
+            /* hauteur fixe */
+            object-fit: cover;
+            /* garde le ratio et coupe si nécessaire */
+            border-radius: 8px;
+            /* optionnel : coins arrondis */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* optionnel : ombre douce */
         }
     </style>
 </head>
@@ -83,8 +141,8 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="index">Acceuil<br></a></li>
-                    <li><a href="evenement" class="active">Evenement</a></li>
-                    <li><a href="membre">Membres</a></li>
+                    <li><a href="evenement">Evenement</a></li>
+                    <li><a href="membre" class="active">Membres</a></li>
                     <li class="dropdown"><a href="#"><span>Organisation</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -106,23 +164,23 @@
     </header>
 
     <main class="main">
+
         <?php
         if (isset($_GET['id'])) {
-            $post_id = $_GET['id'];
-            $post = "SELECT * FROM evenement WHERE id ='$post_id'";
-            $post_run = mysqli_query($con, $post);
+            $membre_id = $_GET['id'];
+            $membre = "SELECT * FROM membre WHERE id ='$membre_id'";
+            $membre_run = mysqli_query($con, $membre);
 
-            if (mysqli_num_rows($post_run) > 0) {
-                $post_row = mysqli_fetch_array($post_run)
+            if (mysqli_num_rows($membre_run) > 0) {
+                $membre_row = mysqli_fetch_array($membre_run)
         ?>
                 <!-- Page Title -->
                 <div class="page-title" data-aos="fade">
-                    <div class="heading">
+                    <div class="heading bg-fac_med">
                         <div class="container">
                             <div class="row d-flex justify-content-center text-center">
                                 <div class="col-lg-8">
-                                    <h1>Événement</h1>
-                                    <p class="mb-0"><?= $post_row['titre']; ?></p>
+                                    <h1><?= $membre_row['nom'] . ' ' . $membre_row['postnom'] . ' ' . $membre_row['prenom']; ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -130,97 +188,114 @@
                     <nav class="breadcrumbs">
                         <div class="container">
                             <ol>
-                                <li><a href="index">Accueil</a></li>
-                                <li class="current">Activités</li>
+                                <li><a href="index">Acceuil</a></li>
+                                <li class="current">Membres</li>
                             </ol>
                         </div>
                     </nav>
                 </div><!-- End Page Title -->
 
-                <!-- Activity Details -->
-                <section id="course-details" class="course-details section">
+                <!-- Detail Membre -->
+                <section id="about" class="about section">
 
-                    <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="container">
 
-                        <div class="row">
-                            <div class="col-lg-8">
+                        <div class="row gy-4">
 
-                                <!-- Course Header -->
-                                <div class="course-header" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="course-image">
-                                        <img src="admin/assets/uploads/evenement/<?= $post_row['photo']; ?>" alt="Evenement Image" class="img-fluid">
-                                    </div>
-                                    <div class="course-meta">
-                                        <div class="instructor">
-                                            <img src="admin/assets/img/favicon.png" alt="Instructor" class="instructor-avatar">
-                                            <div class="instructor-info">
-                                                <h6>AISOE</h6>
-                                                <span>Aide Sociale Étudiants</span>
-                                            </div>
-                                        </div>
-                                        <div class="course-stats">
-                                            <div class="instructor-info">
-                                                <h6><i>Publié le :</i></h6>
-                                                <i class="bi bi-calendar"></i>
-                                                <span><?= date('d/m/Y', strtotime($post_row['created__at'])); ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- End Course Header -->
-
-                                <!-- Course Content -->
-                                <div class="course-content" data-aos="fade-up" data-aos-delay="300">
-                                    <div class="what-you-learn">
-                                        <h3><strong><?= $post_row['titre']; ?></strong></h3>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p><?= $post_row['description']; ?></p>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <p><?= $post_row['detail']; ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div><!-- End Course Content -->
-
+                            <div class="col-lg-4 order-1 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+                                <img src="admin/assets/uploads/<?= $membre_row['photo']; ?>" class="img-fluid member-photo" alt="<?= $membre_row['nom']; ?>">
                             </div>
 
-                            <div class="col-lg-4">
-
-                                <!-- Course Sidebar -->
-                                <div class="course-sidebar" data-aos="fade-up" data-aos-delay="200">
-
-                                    <!-- Pricing Card -->
-                                    <div class="pricing-card">
-                                        <div class="price">
-                                            <h3>Pourquoi nous soutenir ?</h3>
-                                        </div>
-
-                                        <div class="course-features">
-                                            <ul>
-                                                <li>Pour aider les étudiants en difficulté financière.</li>
-                                                <li>Pour éviter l’abandon des études.</li>
-                                                <li>Pour soutenir et l’accompagnement social.</li>
-                                                <li>Pour investir dans l’avenir des jeunes</li>
-                                            </ul>
-                                        </div>
-                                        <a href="don" class="btn-preview">Faire un Don</a>
-                                    </div><!-- End Pricing Card -->
-                                </div><!-- End Course Sidebar -->
-
-
+                            <div class="col-lg-8 order-2 order-lg-2 content" data-aos="fade-up" data-aos-delay="200">
+                                <h3><?= $membre_row['nom'] . ' ' . $membre_row['postnom'] . ' ' . $membre_row['prenom']; ?></h3>
+                                <p class="fst-italic">
+                                    AISOE (Aide Sociale Étudiants). une initiative étudiante née au sein de la Faculté de Médecine
+                                    et Santé Communautaire de l’Université Évangélique en Afrique.
+                                    notre objectif est d’apporter un soutien concret aux étudiants confrontés à des difficultés financières
+                                    afin de leur permettre de poursuivre leurs études jusqu’à leur accomplissement.
+                                </p>
+                                <p>
+                                    Dans un contexte marqué par l’instabilité, la précarité et les défis sociaux qui touchent plusieurs
+                                    familles de l’Est de la RDC, AISOE se présente comme une réponse de solidarité, d’entraide et d’espoir. Le
+                                    projet mobilise les étudiants, les enseignants, les anciens, les églises, les partenaires et les personnes
+                                    de bonne volonté autour d’une même vision : empêcher qu’un étudiant abandonne ses études faute de moyens.
+                                </p>
                             </div>
+
                         </div>
 
                     </div>
 
-                </section><!-- /Activité Details Section -->
+                </section><!-- /About Section -->
         <?php
 
             }
         }
         ?>
+
+        <section id="testimonials" class="testimonials section light-background">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+                        {
+                            "loop": true,
+                            "speed": 600,
+                            "autoplay": {
+                                "delay": 5000
+                            },
+                            "slidesPerView": "auto",
+                            "pagination": {
+                                "el": ".swiper-pagination",
+                                "type": "bullets",
+                                "clickable": true
+                            },
+                            "breakpoints": {
+                                "320": {
+                                    "slidesPerView": 1,
+                                    "spaceBetween": 20
+                                },
+                                "1200": {
+                                    "slidesPerView": 3,
+                                    "spaceBetween": 30
+                                }
+                            }
+                        }
+                    </script>
+
+                    <div class="swiper-wrapper">
+                        <?php
+                        $homeactivite = "SELECT * FROM membre WHERE status= 1 ORDER BY created_at DESC LIMIT 6";
+                        $homeactivite_run = mysqli_query($con, $homeactivite);
+                        if (mysqli_num_rows($homeactivite_run) > 0) {
+                            foreach ($homeactivite_run as $homeItems) {
+                        ?>
+                                <div class="swiper-slide">
+                                    <div class="course-item">
+                                        <div class="image-box">
+                                            <img src="admin/assets/uploads/<?= $homeItems['photo']; ?>"
+                                                alt="<?= $homeItems['nom']; ?>"
+                                                class="img-fluid image-box-img">
+                                        </div>
+                                        <div class="course-content">
+                                            <h3><?= $homeItems['nom'] . ' ' . $homeItems['postnom']; ?></h3>
+                                            <p class="description"><?= $homeItems['fonction']; ?></p>
+                                            <div class="trainer d-flex justify-content-between align-items-center">
+                                                <a href="membre-details.php?id=<?= $homeItems['id']; ?>" class="category">Lire plus</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
     <footer id="footer" class="footer position-relative dark-background">
@@ -239,10 +314,9 @@
                     <div class="social-links d-flex mt-4">
                         <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                                 class="bi bi-facebook"></i></a>
-                        <a href="" target="_blank"><i class="bi bi-youtube"></i></a>
+                        <a href=""><i class="bi bi-youtube"></i></a>
                         <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i class="bi bi-tiktok"></i></a>
-                        <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"
-                            target="_blank"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false" target="_blank"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
 
@@ -259,8 +333,8 @@
 
                 <div class="col-lg-6 col-md-12 footer-newsletter">
                     <h4>Notre Newsletter</h4>
-                    <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos initiatives en
-                        faveur des étudiants</p>
+                    <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos
+                        initiatives en faveur des étudiants</p>
                     <form action="code.php" method="post">
                         <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email" required><input type="submit" name="newslatter"></div>
                     </form>

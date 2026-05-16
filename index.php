@@ -47,6 +47,65 @@ include "admin/conf/dbcon.php";
       object-fit: cover;
       display: block;
     }
+
+    /* Style des cartes */
+    .course-item {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      /* Ombre douce */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .course-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      /* Ombre plus forte au hover */
+    }
+
+    /* Image */
+    .image-box {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Contenu */
+    .course-content {
+      padding: 15px;
+    }
+
+    .course-content h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    /* Bouton Lire plus */
+    .course-content .category {
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: #dc3545;
+      /* Rouge Bootstrap */
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .course-content .category:hover {
+      background-color: #b02a37;
+      /* Rouge plus foncé au hover */
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -56,7 +115,7 @@ include "admin/conf/dbcon.php";
       <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
         <div class="d-inline-flex align-items-center" style="height: 45px;">
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
-                class="bi bi-facebook"></i></a>
+              class="bi bi-facebook"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
             href="https://www.youtube.com/@etoiledelouangeUEA" target="_blank"><i class="bi bi-youtube"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
@@ -166,7 +225,7 @@ include "admin/conf/dbcon.php";
 
 
     <!-- But, Objectifs, Mission, Fonctionnements Section -->
-    <section id="why-us" class="section why-us">
+    <section id="why-us" class="section why-us light-background">
 
       <div class="container">
         <div class="row gy-4">
@@ -458,7 +517,7 @@ include "admin/conf/dbcon.php";
             <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
           <?php } ?>
           <form action="code.php" method="post">
-            <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"><input type="submit" name="newslatter"></div>
+            <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"required><input type="submit" name="newslatter"></div>
           </form>
         </div>
 

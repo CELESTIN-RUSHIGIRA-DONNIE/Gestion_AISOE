@@ -42,19 +42,19 @@ if (isset($_POST['send_message'])) {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'etoiledelouangeuea01@gmail.com';       // Gmail de la chorale // aidesocialeetudiantaisoe@gmail.com
-        $mail->Password   = 'gkqhahtvfwvwwsyk';         // mot de passe d’application // pour AISOE gnodvykdderghxgo
+        $mail->Username   = 'aidesocialeetudiantaisoe@gmail.com';       // Gmail de la chorale // aidesocialeetudiantaisoe@gmail.com
+        $mail->Password   = 'gnodvykdderghxgo';         // mot de passe d’application // pour AISOE gnodvykdderghxgo
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;     // TLS
         $mail->Port       = 587;
 
         // 3. Infos d’expéditeur et destinataire
-        $mail->setFrom('etoiledelouangeuea01@gmail.com', 'Site Aide Sociale Étudiants');
-        $mail->addAddress('celestinrushigiradonnie@gmail.com', 'Responsable AISOE');
+        $mail->setFrom('aidesocialeetudiantaisoe@gmail.com', 'Site Aide Sociale Étudiants');
+        $mail->addAddress('aidesocialeetudiantaisoe@gmail.com', 'Responsable AISOE');
         $mail->addReplyTo($email, $name); // pour répondre directement à la personne
 
         // 4. Contenu du mail
         $mail->isHTML(false); // texte simple
-        $mail->Subject = "Nouveau message du site chorale : ".$subject;
+        $mail->Subject = "Nouveau message du site web AISOE : ".$subject;
         $body  = "Vous avez reçu un nouveau message depuis le site d'AISOE.\n\n";
         $body .= "Nom : $name\n";
         $body .= "Email : $email\n";

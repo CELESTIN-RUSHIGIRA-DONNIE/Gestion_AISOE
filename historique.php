@@ -39,7 +39,7 @@
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                             class="bi bi-facebook"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-                        href="https://www.youtube.com/@etoiledelouangeUEA" target="_blank"><i class="bi bi-youtube"></i></a>
+                        href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
                             class="bi bi-tiktok"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
@@ -182,9 +182,9 @@
                             <div class="tab-pane active show" id="tab-1">
                                 <div class="row">
                                     <div class="col-lg-8 details order-2 order-lg-1">
-                                        <h3>Architecto ut aperiam autem id</h3>
+                                        <!-- <h3>Architecto ut aperiam autem id</h3>
                                         <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente
-                                            dila parde sonata raqer a videna mareta paulona marka</p>
+                                            dila parde sonata raqer a videna mareta paulona marka</p> -->
                                         <p>Aide Sociale Etudiants a son siège à la faculté de Médecine et santé
                                             communautaire de
                                             l’Université Evangélique en Afrique, au quartier Panzi, en commune d’Ibanda
@@ -203,9 +203,9 @@
                             <div class="tab-pane" id="tab-2">
                                 <div class="row">
                                     <div class="col-lg-8 details order-2 order-lg-1">
-                                        <h3>Et blanditiis nemo veritatis excepturi</h3>
+                                        <!-- <h3>Et blanditiis nemo veritatis excepturi</h3>
                                         <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente
-                                            dila parde sonata raqer a videna mareta paulona marka</p>
+                                            dila parde sonata raqer a videna mareta paulona marka</p> -->
                                         <p>Le champ d’action d’AISOE asbl s’étant sur toutes les institutions
                                             supérieures et universitaires de
                                             la ville de Bukavu en particulier et de la province du Sud-Kivu en général.
@@ -221,10 +221,10 @@
                             <div class="tab-pane" id="tab-3">
                                 <div class="row">
                                     <div class="col-lg-8 details order-2 order-lg-1">
-                                        <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
+                                        <!-- <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
                                         <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non
                                             enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat
-                                            perferendis aut</p>
+                                            perferendis aut</p> -->
                                         <p>Aide Sociale Étudiant asbl a une durée indéterminée.</p>
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
@@ -258,10 +258,10 @@
                             <div class="tab-pane" id="tab-5">
                                 <div class="row">
                                     <div class="col-lg-8 details order-2 order-lg-1">
-                                        <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
+                                        <!-- <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
                                         <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro
                                             quia.
-                                        </p>
+                                        </p> -->
                                         <p>
                                             AISOE a pour but : donner la chance aux étudiants démunis vaillants et
                                             ambitieux à risque
@@ -307,7 +307,7 @@
                     <div class="social-links d-flex mt-4">
                         <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                                 class="bi bi-facebook"></i></a>
-                        <a href=""><i class="bi bi-youtube"></i></a>
+                        <a href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
                         <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
                                 class="bi bi-tiktok"></i></a>
                         <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"

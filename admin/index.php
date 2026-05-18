@@ -103,7 +103,7 @@ include('conf/dbcon.php');
                                 <p class="text-muted mb-0"><?= $_SESSION['auth_user']['fonction']  ?></p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <a class="dropdown-item" href="profile">My Profile</a>
                         <form action="logout.php" method="POST">
                             <button type="submit" class="dropdown-item" name="logout">Logout</button>
                         </form>
@@ -268,6 +268,14 @@ include('conf/dbcon.php');
                         </div>
                     </div>
                 </div>
+
+                <?php if (isset($_SESSION['message'])) { ?>
+                    <div class="alert alert-<?php echo $_SESSION['msg_type']; ?> alert-dismissible fade show mb-3" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <?php echo $_SESSION['message']; ?>
+                    </div>
+                    <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
+                <?php } ?>
 
 
             </div>

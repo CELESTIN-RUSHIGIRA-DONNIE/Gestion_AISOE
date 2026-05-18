@@ -28,6 +28,7 @@ if (isset($_POST["add_member"])) {
     $address = mysqli_real_escape_string($con, $_POST['address']);
     $function = mysqli_real_escape_string($con, $_POST['function']);
     $type_membre = mysqli_real_escape_string($con, $_POST['type_membre']);
+    $presentation = mysqli_real_escape_string($con, $_POST['presentation']);
 
     $image = $_FILES['photo']['name'];
     $image_tmp = $_FILES['photo']['tmp_name'];
@@ -49,8 +50,8 @@ if (isset($_POST["add_member"])) {
         header("Location: ajouter_membre.php");
         exit;
     } else {
-        $insert_query = "INSERT INTO membre (nom, postnom, prenom, sexe, telephone, email, institution, faculte, promotion, etat_civil, profession, adress, fonction, type_membre, photo) 
-        VALUES ('$nom', '$postnom', '$prenom', '$genre', '$telephone', '$email', '$institution', '$faculte', '$promotion', '$civil_status', '$profession', '$address', '$function', '$type_membre', '$image')";
+        $insert_query = "INSERT INTO membre (nom, postnom, prenom, sexe, telephone, email, institution, faculte, promotion, etat_civil, profession, adress, fonction, type_membre, photo,presentation) 
+        VALUES ('$nom', '$postnom', '$prenom', '$genre', '$telephone', '$email', '$institution', '$faculte', '$promotion', '$civil_status', '$profession', '$address', '$function', '$type_membre', '$image','$presentation')";
         $insert_query_run = mysqli_query($con, $insert_query);
 
         if ($insert_query_run) {
@@ -82,6 +83,7 @@ if (isset($_POST["add_member"])) {
     $address = mysqli_real_escape_string($con, $_POST['address']);
     $function = mysqli_real_escape_string($con, $_POST['function']);
     $type_membre = mysqli_real_escape_string($con, $_POST['type_membre']);
+    $presentation = mysqli_real_escape_string($con, $_POST['presentation']);
 
     $old_filename = $_POST['old_photo'];
     $image = $_FILES['new_photo']['name'];
@@ -111,7 +113,7 @@ if (isset($_POST["add_member"])) {
     $query = "UPDATE membre SET nom='$nom', postnom='$postnom', prenom='$prenom', sexe='$genre', 
     telephone='$telephone', email='$email', institution='$institution', faculte='$faculte', promotion='$promotion', 
     etat_civil='$civil_status', profession='$profession', adress='$address', fonction='$function', type_membre='$type_membre',
-    photo='$new_filename' WHERE id='$member_id'";
+    photo='$new_filename', presentation='$presentation' WHERE id='$member_id'";
 
     $query_run = mysqli_query($con, $query);
 
@@ -487,14 +489,68 @@ else if (isset($_POST["Enregistrer_partenaire"])) {
     $query_run = mysqli_query($con, $query);
 
     if ($query_run) {
-            $_SESSION['message'] = "Partenaire mis à jour avec succès.";
-            $_SESSION['msg_type'] = "success";
-            header('Location: ajouter_partenaire.php');
-            exit;
+        $_SESSION['message'] = "Partenaire mis à jour avec succès.";
+        $_SESSION['msg_type'] = "success";
+        header('Location: ajouter_partenaire.php');
+        exit;
     } else {
         $_SESSION['message'] = "Erreur lors de la mise à jour du partenaire.";
         $_SESSION['msg_type'] = "danger";
         header("Location: edit_partenaire.php?id=$member_id");
+        exit;
+    }
+} else if (isset($_POST['save_change'])) {
+
+    $agent_id = (int) $_SESSION['auth_user']['id'];
+    $old_password = $_POST['ancien_password'] ?? '';
+    $new_password = $_POST['nouveau_password'] ?? '';
+    $new_password_confirm = $_POST['confirm_nouveau_password'] ?? '';
+
+    // 1. Vérifier que les deux nouveaux mots de passe sont identiques
+    if ($new_password !== $new_password_confirm) {
+        $_SESSION['message'] = "Les deux nouveaux mots de passe ne correspondent pas";
+        $_SESSION['msg_type'] = "danger";
+        header("Location: profile.php");
+        exit;
+    }
+
+    // 2. Récupérer le mot de passe actuel en base
+    $stmt = $con->prepare("SELECT password FROM membre WHERE id = ?");
+    $stmt->bind_param('i', $agent_id);
+    $stmt->execute();
+    $stmt->bind_result($password_hash_db);
+    if (!$stmt->fetch()) {
+        $_SESSION['message'] = "Membre introuvable";
+        $_SESSION['msg_type'] = "danger";
+        header("Location: profile.php");
+        exit;
+    }
+    $stmt->close();
+
+    // 3. Vérifier l'ancien mot de passe
+    if (!password_verify($old_password, $password_hash_db)) {
+        $_SESSION['message'] = "Ancien mot de passe incorrect.";
+        $_SESSION['msg_type'] = "danger";
+        header("Location: profile.php");
+        exit;
+    }
+
+    // 4. Hacher le nouveau mot de passe
+    $new_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+    // 5. Mettre à jour en base
+    $stmt = $con->prepare("UPDATE membre SET password = ? WHERE id = ?");
+    $stmt->bind_param('si', $new_hash, $agent_id);
+    if ($stmt->execute()) {
+        $_SESSION['message'] = "Mot de passe modifié avec succès.";
+        $_SESSION["msg_type"] = "success";
+        header("Location: profile.php");
+        exit;
+    } else {
+
+        $_SESSION['message'] = "Erreur lors de la mise à jour.";
+        $_SESSION["msg_type"] = "success";
+        header("Location: profile.php");
         exit;
     }
 }

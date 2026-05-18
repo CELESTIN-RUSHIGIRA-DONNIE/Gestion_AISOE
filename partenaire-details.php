@@ -1,12 +1,11 @@
+<?php include('admin/conf/dbcon.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AISOE - Organes</title>
-    <meta name="description" content="Découvrez les différents organes qui composent l'organisation AISOE.">
-    <meta name="keywords" content="Organes, AISOE, Structure organisationnelle, Leadership, Gouvernance">
+    <title>AISOE - Details partenaire</title>
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -28,6 +27,80 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        /* Style des cartes */
+        .course-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Ombre douce */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            /* Ombre plus forte au hover */
+        }
+
+        /* Image */
+        .image-box {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contenu */
+        .course-content {
+            padding: 15px;
+        }
+
+        .course-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Bouton Lire plus */
+        .course-content .category {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #db3030;
+            /* Rouge Bootstrap */
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-content .category:hover {
+            background-color: #db3030;
+            /* Rouge plus foncé au hover */
+            color: #fff;
+        }
+
+        .member-photo {
+            width: 450px;
+            /* largeur fixe */
+            height: 450px;
+            /* hauteur fixe */
+            object-fit: cover;
+            /* garde le ratio et coupe si nécessaire */
+            border-radius: 8px;
+            /* optionnel : coins arrondis */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* optionnel : ombre douce */
+        }
+    </style>
 </head>
 
 <body class="index-page">
@@ -65,14 +138,14 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="index">Acceuil<br></a></li>
+                    <li><a href="index" class="active">Acceuil<br></a></li>
                     <li><a href="evenement">Evenement</a></li>
                     <li><a href="membre">Membres</a></li>
-                    <li class="dropdown"><a href="#" class="active"><span>Organisation</span> <i
+                    <li class="dropdown"><a href="#"><span>Organisation</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="historique">Historique</a></li>
-                            <li><a href="organe" class="active">Organes</a></li>
+                            <li><a href="organe">Organes</a></li>
                             <li><a href="activite">Activités</a></li>
                             <li><a href="temoignage">Temoignages</a></li>
                             <li><a href="login">Login</a></li>
@@ -90,83 +163,67 @@
 
     <main class="main">
 
-        <!-- Page Title -->
-        <div class="page-title" data-aos="fade">
-            <div class="heading">
-                <div class="container">
-                    <div class="row d-flex justify-content-center text-center">
-                        <div class="col-lg-8">
-                            <h1>Organes de AISOE</h1>
-                            <p class="mb-0">Découvrez les différents organes qui composent l'organisation AISOE.</p>
+        <?php
+        if (isset($_GET['id'])) {
+            $partenaire_id = $_GET['id'];
+            $partenaire = "SELECT * FROM partenaire WHERE id ='$partenaire_id'";
+            $partenaire_run = mysqli_query($con, $partenaire);
+
+            if (mysqli_num_rows($partenaire_run) > 0) {
+                $membre_row = mysqli_fetch_array($partenaire_run)
+        ?>
+                <!-- Page Title -->
+                <div class="page-title" data-aos="fade">
+                    <div class="heading bg-fac_med">
+                        <div class="container">
+                            <div class="row d-flex justify-content-center text-center">
+                                <div class="col-lg-8">
+                                    <h1><?= $membre_row['nom'] ?></h1>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <nav class="breadcrumbs">
-                <div class="container">
-                    <ol>
-                        <li><a href="index">Accueil</a></li>
-                        <li class="current">Organes</li>
-                    </ol>
-                </div>
-            </nav>
-        </div><!-- End Page Title -->
+                    <nav class="breadcrumbs">
+                        <div class="container">
+                            <ol>
+                                <li><a href="index">Acceuil</a></li>
+                                <li class="current">Partenaire</li>
+                            </ol>
+                        </div>
+                    </nav>
+                </div><!-- End Page Title -->
 
-        <!-- Course Details Section -->
-        <section id="course-details" class="course-details section">
+                <!-- Detail Membre -->
+                <section id="about" class="about section">
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="container">
 
-                <div class="row">
-                    <div class="col-lg-12">
+                        <div class="row gy-4">
 
-                        <!-- Course Header -->
-                        <div class="course-header" data-aos="fade-up" data-aos-delay="200">
-                            <div class="course-image">
-                                <img src="assets/img/aisoe_ac.jpg" alt="Course Image" class="img-fluid">
+                            <div class="col-lg-6 order-1 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+                                <img src="admin/assets/uploads/partenaire/<?= $membre_row['photo']; ?>" class="img-fluid member-photo" alt="<?= $membre_row['nom']; ?>">
                             </div>
-                            <div class="course-info">
-                                <h2>Organes de AISOE</h2>
+
+                            <div class="col-lg-6 order-2 order-lg-2 content" data-aos="fade-up" data-aos-delay="200">
+                                <h3><?= $membre_row['nom'] ?></h3>
+                                <p class="fst-italic">
+                                    <?= $membre_row['adresse'] ?>
+                                </p>
+                                <p>
+                                    <?= $membre_row['description'] ?>
+                                </p>
                             </div>
-                        </div><!-- End Course Header -->
 
-                        <!-- Course Content -->
-                        <div class="course-content" data-aos="fade-up" data-aos-delay="300">
+                        </div>
 
-                            <table class="organe-table">
-                                <thead>
-                                    <tr>
-                                        <th>Organe</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Conseil d'Administration</td>
-                                        <td>Le conseil d'administration est l'organe de direction de l'organisation.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Comité Scientifique</td>
-                                        <td>Le comité scientifique est responsable de la supervision des activités
-                                            scientifiques.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Section des Membres</td>
-                                        <td>La section des membres est responsable de la gestion des adhésions et de la
-                                            communication avec les membres.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div><!-- End Course Content -->
                     </div>
 
-                </div>
+                </section><!-- /About Section -->
+        <?php
 
-            </div>
-
-        </section><!-- /Course Details Section -->
+            }
+        }
+        ?>
 
     </main>
 
@@ -187,10 +244,8 @@
                         <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                                 class="bi bi-facebook"></i></a>
                         <a href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
-                        <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
-                                class="bi bi-tiktok"></i></a>
-                        <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"
-                            target="_blank"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i class="bi bi-tiktok"></i></a>
+                        <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false" target="_blank"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
 
@@ -204,7 +259,6 @@
                         <li><a href="contact">Contact</a></li>
                     </ul>
                 </div>
-
 
                 <div class="col-lg-6 col-md-12 footer-newsletter">
                     <h4>Notre Newsletter</h4>

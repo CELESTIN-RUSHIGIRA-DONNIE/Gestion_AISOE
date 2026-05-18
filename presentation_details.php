@@ -1,12 +1,14 @@
+<?php include "admin/conf/dbcon.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AISOE - Organes</title>
-    <meta name="description" content="Découvrez les différents organes qui composent l'organisation AISOE.">
-    <meta name="keywords" content="Organes, AISOE, Structure organisationnelle, Leadership, Gouvernance">
+    <title>AISOE - Detail de l'évenement</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -28,6 +30,21 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        .image-box {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .image-box-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
 </head>
 
 <body class="index-page">
@@ -66,13 +83,13 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="index">Acceuil<br></a></li>
-                    <li><a href="evenement">Evenement</a></li>
+                    <li><a href="evenement" class="active">Evenement</a></li>
                     <li><a href="membre">Membres</a></li>
-                    <li class="dropdown"><a href="#" class="active"><span>Organisation</span> <i
+                    <li class="dropdown"><a href="#"><span>Organisation</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="historique">Historique</a></li>
-                            <li><a href="organe" class="active">Organes</a></li>
+                            <li><a href="organe">Organes</a></li>
                             <li><a href="activite">Activités</a></li>
                             <li><a href="temoignage">Temoignages</a></li>
                             <li><a href="login">Login</a></li>
@@ -92,12 +109,12 @@
 
         <!-- Page Title -->
         <div class="page-title" data-aos="fade">
-            <div class="heading">
+            <div class="heading bg-bask">
                 <div class="container">
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
-                            <h1>Organes de AISOE</h1>
-                            <p class="mb-0">Découvrez les différents organes qui composent l'organisation AISOE.</p>
+                            <h1>Description</h1>
+                            <p class="mb-0">Description Aide Sociale Etudiant</p>
                         </div>
                     </div>
                 </div>
@@ -106,67 +123,84 @@
                 <div class="container">
                     <ol>
                         <li><a href="index">Accueil</a></li>
-                        <li class="current">Organes</li>
+                        <li class="current">Description AISOE</li>
                     </ol>
                 </div>
             </nav>
         </div><!-- End Page Title -->
 
-        <!-- Course Details Section -->
+        <!-- Activity Details -->
         <section id="course-details" class="course-details section">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-8">
 
                         <!-- Course Header -->
                         <div class="course-header" data-aos="fade-up" data-aos-delay="200">
-                            <div class="course-image">
-                                <img src="assets/img/aisoe_ac.jpg" alt="Course Image" class="img-fluid">
-                            </div>
-                            <div class="course-info">
-                                <h2>Organes de AISOE</h2>
+                            <div class="course-meta">
+                                <div class="instructor">
+                                    <img src="admin/assets/img/favicon.png" alt="Instructor" class="instructor-avatar">
+                                    <div class="instructor-info">
+                                        <h6>AISOE</h6>
+                                        <span>Aide Sociale Étudiants</span>
+                                    </div>
+                                </div>
                             </div>
                         </div><!-- End Course Header -->
 
                         <!-- Course Content -->
                         <div class="course-content" data-aos="fade-up" data-aos-delay="300">
-
-                            <table class="organe-table">
-                                <thead>
-                                    <tr>
-                                        <th>Organe</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Conseil d'Administration</td>
-                                        <td>Le conseil d'administration est l'organe de direction de l'organisation.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Comité Scientifique</td>
-                                        <td>Le comité scientifique est responsable de la supervision des activités
-                                            scientifiques.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Section des Membres</td>
-                                        <td>La section des membres est responsable de la gestion des adhésions et de la
-                                            communication avec les membres.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="what-you-learn">
+                                <h3><strong>AISOE (Aide Sociale Étudiants)</strong></h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>AISOE (Aide Sociale Étudiants). une initiative étudiante née au sein de la Faculté de Médecine 
+                                            et Santé Communautaire de l’Université Évangélique en Afrique. notre objectif est d’apporter 
+                                            un soutien concret aux étudiants confrontés à des difficultés financières 
+                                            afin de leur permettre de poursuivre leurs études jusqu’à leur accomplissement.</p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>Dans un contexte marqué par l’instabilité, la précarité et les défis sociaux qui touchent plusieurs familles de l’Est de la RDC, AISOE se présente comme une réponse de solidarité, d’entraide et d’espoir. Le projet mobilise les étudiants, les enseignants, les anciens, les églises, les partenaires et les personnes de bonne volonté autour d’une même vision : empêcher qu’un étudiant abandonne ses études faute de moyens.</p>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div><!-- End Course Content -->
+
                     </div>
 
+                    <div class="col-lg-4">
+
+                        <!-- Course Sidebar -->
+                        <div class="course-sidebar" data-aos="fade-up" data-aos-delay="200">
+
+                            <!-- Pricing Card -->
+                            <div class="pricing-card">
+                                <div class="price">
+                                    <h3>Pourquoi nous soutenir ?</h3>
+                                </div>
+
+                                <div class="course-features">
+                                    <ul>
+                                        <li>Pour aider les étudiants en difficulté financière.</li>
+                                        <li>Pour éviter l’abandon des études.</li>
+                                        <li>Pour soutenir et l’accompagnement social.</li>
+                                        <li>Pour investir dans l’avenir des jeunes</li>
+                                    </ul>
+                                </div>
+                                <a href="don" class="btn-preview">Faire un Don</a>
+                            </div><!-- End Pricing Card -->
+                        </div><!-- End Course Sidebar -->
+
+
+                    </div>
                 </div>
 
             </div>
 
-        </section><!-- /Course Details Section -->
+        </section><!-- /Activité Details Section -->
 
     </main>
 
@@ -187,8 +221,7 @@
                         <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                                 class="bi bi-facebook"></i></a>
                         <a href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
-                        <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
-                                class="bi bi-tiktok"></i></a>
+                        <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i class="bi bi-tiktok"></i></a>
                         <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"
                             target="_blank"><i class="bi bi-linkedin"></i></a>
                     </div>
@@ -205,11 +238,10 @@
                     </ul>
                 </div>
 
-
                 <div class="col-lg-6 col-md-12 footer-newsletter">
                     <h4>Notre Newsletter</h4>
-                    <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos
-                        initiatives en faveur des étudiants</p>
+                    <p>Abonnez-vous à notre newsletter pour suivre les nouvelles de AISOE, nos projets et nos initiatives en
+                        faveur des étudiants</p>
                     <form action="code.php" method="post">
                         <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email" required><input type="submit" name="newslatter"></div>
                     </form>

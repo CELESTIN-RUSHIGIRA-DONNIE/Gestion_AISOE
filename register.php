@@ -42,7 +42,7 @@ session_start();
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                             class="bi bi-facebook"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-                        href="https://www.youtube.com/@etoiledelouangeUEA" target="_blank"><i class="bi bi-youtube"></i></a>
+                        href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
                             class="bi bi-tiktok"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
@@ -92,13 +92,24 @@ session_start();
     </header>
 
     <main class="main">
+        <div class="page-title" data-aos="fade">
+            <div class="heading bg-fac_med">
+                <div class="container">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-lg-8">
+                            <h1>Créer un compte</h1>
+                            <p class="mb-0">Veuillez remplir les champs ci-dessous pour créer un compte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section id="features" class="features section light-background">
             <div class="container-fluid ">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
                             <div class="rounded p-5">
-                                <h1 class="text-center mb-4">Enregitrez-vous</h1>
                                 <?php if (isset($_SESSION['message'])) { ?>
                                     <div class="alert alert-<?php echo $_SESSION['msg_type']; ?> alert-dismissible fade show mb-3" role="alert">
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -123,6 +134,9 @@ session_start();
                                     </div>
                                     <div class="d-grid">
                                         <button type="submit" name="register" class="btn btn-danger btn-block">Register</button>
+                                    </div>
+                                    <div class="mt-3 text-center">
+                                        <i class="bi bi-person"></i> <span> Avez vous un compte? <a href="login">Cliquez ici</a></span>
                                     </div>
                                 </form>
                             </div>
@@ -149,7 +163,7 @@ session_start();
                     <div class="social-links d-flex mt-4">
                         <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                                 class="bi bi-facebook"></i></a>
-                        <a href=""><i class="bi bi-youtube"></i></a>
+                        <a href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE"><i class="bi bi-youtube"></i></a>
                         <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i class="bi bi-tiktok"></i></a>
                         <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"
                             target="_blank"><i class="bi bi-linkedin"></i></a>

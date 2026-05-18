@@ -92,7 +92,7 @@ include "admin/conf/dbcon.php";
     .course-content .category {
       display: inline-block;
       padding: 8px 15px;
-      background-color: #dc3545;
+      background-color: #0f0405;
       /* Rouge Bootstrap */
       color: #fff;
       border-radius: 4px;
@@ -102,7 +102,7 @@ include "admin/conf/dbcon.php";
     }
 
     .course-content .category:hover {
-      background-color: #b02a37;
+      background-color: #db3030;
       /* Rouge plus foncé au hover */
       color: #fff;
     }
@@ -117,7 +117,7 @@ include "admin/conf/dbcon.php";
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
               class="bi bi-facebook"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href="https://www.youtube.com/@etoiledelouangeUEA" target="_blank"><i class="bi bi-youtube"></i></a>
+            href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
               class="bi bi-tiktok"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
@@ -214,7 +214,7 @@ include "admin/conf/dbcon.php";
               <li><i class="bi bi-check-circle"></i> <span>Ensemble, aidons les étudiants à aller jusqu’au bout.</span></li>
               <li><i class="bi bi-check-circle"></i> <span>AISOE, un soutien concret pour l’avenir des jeunes.</span></li>
             </ul> -->
-            <a href="#" class="read-more"><span>Lire plus</span><i class="bi bi-arrow-right"></i></a>
+            <a href="presentation_details.php" class="read-more"><span>Lire plus</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
         </div>
@@ -282,66 +282,72 @@ include "admin/conf/dbcon.php";
 
     </section><!-- end But, Objectifs, Mission, Fonctionnements Section -->
 
-    <!-- Partenaires Section -->
-    <section id="features" class="features section py-5">
+    <section id="testimonials" class="testimonials section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Partenaires</h2>
-        <p>Voici nos partenaires</p>
+        <h2>voir nos partenaires</h2>
+        <p>Nos Partenaires</p>
       </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 20
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 30
+                }
+              }
+            }
+          </script>
 
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="features-item">
-              <!-- <i class="bi bi-eye" style="color: #ffbb2c;"></i> -->
-              <img src="assets/img/aisoe.jpg" alt="UEA BUKAVU" class="img-fluid" style="width: 50px; height: 50px;">
-              <h3><a href="" class="stretched-link">UEA BUKAVU</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="features-item">
-              <i class="bi bi-infinity" style="color: #5578ff;"></i>
-              <h3><a href="" class="stretched-link">UOB BUKAVU</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="features-item">
-              <i class="bi bi-mortarboard" style="color: #e80368;"></i>
-              <h3><a href="" class="stretched-link">ISTM BUKAVU</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="features-item">
-              <i class="bi bi-nut" style="color: #e361ff;"></i>
-              <h3><a href="" class="stretched-link">AUMOPRO UEA</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="features-item">
-              <i class="bi bi-shuffle" style="color: #47aeff;"></i>
-              <h3><a href="" class="stretched-link">EGLISE SINAI PANZI</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="features-item">
-              <i class="bi bi-star" style="color: #ffa76e;"></i>
-              <h3><a href="" class="stretched-link">EGLISE SAINT PIERRE</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
+          <div class="swiper-wrapper">
+            <?php
+            $homeactivite = "SELECT * FROM partenaire WHERE status= 1";
+            $homeactivite_run = mysqli_query($con, $homeactivite);
+            if (mysqli_num_rows($homeactivite_run) > 0) {
+              foreach ($homeactivite_run as $homeItems) {
+            ?>
+                <div class="swiper-slide">
+                  <div class="course-item">
+                    <div class="image-box">
+                      <img src="admin/assets/uploads/partenaire/<?= $homeItems['photo']; ?>"
+                        alt="<?= $homeItems['nom']; ?>"
+                        class="img-fluid image-box-img">
+                    </div>
+                    <div class="course-content">
+                      <h3><?= $homeItems['nom']; ?></h3>
+                      <p class="description"><?= $homeItems['adresse']; ?></p>
+                      <div class="trainer d-flex justify-content-between align-items-center">
+                        <a href="partenaire-details.php?id=<?= $homeItems['id']; ?>" class="category">Lire plus</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <?php
+              }
+            }
+            ?>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
-
       </div>
-
-    </section><!-- end Partenaires Section -->
+    </section>
 
     <!-- Activities Section -->
     <section id="courses" class="courses section light-background">
@@ -487,7 +493,7 @@ include "admin/conf/dbcon.php";
           <div class="social-links d-flex mt-4">
             <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                 class="bi bi-facebook"></i></a>
-            <a href="" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
             <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i class="bi bi-tiktok"></i></a>
             <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"
               target="_blank"><i class="bi bi-linkedin"></i></a>
@@ -517,7 +523,7 @@ include "admin/conf/dbcon.php";
             <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
           <?php } ?>
           <form action="code.php" method="post">
-            <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email"required><input type="submit" name="newslatter"></div>
+            <div class="newsletter-form"><input type="email" placeholder="Entrez votre Email" name="email" required><input type="submit" name="newslatter"></div>
           </form>
         </div>
 

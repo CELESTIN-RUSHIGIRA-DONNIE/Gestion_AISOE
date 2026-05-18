@@ -121,7 +121,7 @@ include('conf/dbcon.php');
                                 <p class="text-muted mb-0"><?= $_SESSION['auth_user']['fonction']  ?></p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <a class="dropdown-item" href="profile">My Profile</a>
                         <form action="logout.php" method="POST">
                             <button type="submit" class="dropdown-item" name="logout">Logout</button>
                         </form>

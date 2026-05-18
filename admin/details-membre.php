@@ -118,7 +118,7 @@ include('conf/dbcon.php');
                                 <p class="text-muted mb-0"><?= $_SESSION['auth_user']['fonction']  ?></p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <a class="dropdown-item" href="profile">My Profile</a>
                         <form action="logout.php" method="POST">
                             <button type="submit" class="dropdown-item" name="logout">Logout</button>
                         </form>
@@ -350,22 +350,18 @@ include('conf/dbcon.php');
                                                             <h5><?= $list['adress']; ?></h5>
                                                         </div>
                                                     </div><br>
+                                                    <div class="personal-activity mb-0">
+                                                        <div class="personal-icons">
+                                                            <i class="feather-map-pin"></i>
+                                                        </div>
+                                                        <div class="views-personal">
+                                                            <h4>Categorie Membre</h4>
+                                                            <h5><?= $list['type_membre'] == '1' ? 'Membres sympathisants' : ($list['type_membre'] == '2' ? 'Membres adhérents' : ($list['type_membre'] == '3' ? 'Membres d’honneurs' : 'Membres fondateurs')) ?></h5>
+                                                        </div>
+                                                    </div><br>
                                                     <div class="hello-park">
                                                         <h5>Presatation</h5>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                            aliquip ex commodo consequat. Duis aute irure dolor in reprehenderit
-                                                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                                            Excepteur officia deserunt mollit anim id est laborum.</p>
-                                                    </div>
-                                                    <div class="hello-park">
-                                                        <h5>Education</h5>
-                                                        <div class="educate-year">
-                                                            <h6>2008 - 2009</h6>
-                                                            <p>Secondary Schooling at xyz school of secondary education, Mumbai.
-                                                            </p>
-                                                        </div>
+                                                        <p><?= $list['presentation']; ?></p>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,5 +1,5 @@
 <?php
- error_reporting(E_ALL);
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);   
 session_start();
@@ -28,12 +28,12 @@ if (isset($_POST['send_newslatter'])) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'etoiledelouangeuea01@gmail.com';  // ← TON EMAIL
-    $mail->Password = 'gkqhahtvfwvwwsyk';        // ← MOT DE PASSE APP
+    $mail->Username = 'aidesocialeetudiantaisoe@gmail.com';  // ← TON EMAIL
+    $mail->Password = 'gnodvykdderghxgo';        // ← MOT DE PASSE APP
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
-    $mail->setFrom('etoiledelouangeuea01@gmail.com', 'Etoile de Louange UEA'); // ← TON EMAIL
+    $mail->setFrom('aidesocialeetudiantaisoe@gmail.com', 'Aide Sociale Etudiants'); // ← TON EMAIL
     $mail->isHTML(true);
 
     $ok = 0;
@@ -44,7 +44,7 @@ if (isset($_POST['send_newslatter'])) {
         $mail->addAddress($row['email']);
 
         $mail->Subject = $subject;
-        $mail->Body = $message . '<br><br><small>Etoile de Louange UEA</small>';
+        $mail->Body = $message . '<br><br><small>Aide Sociale Etudiant</small>';
 
         try {
             $mail->send();
@@ -54,7 +54,8 @@ if (isset($_POST['send_newslatter'])) {
         }
     }
 
-    $_SESSION['msg'] = "$ok / $total emails envoyés avec succès !";
+    $_SESSION['message'] = "$ok / $total emails envoyés avec succès !";
+    $_SESSION['msg_type'] = "success";
     header("Location: newslatter.php");
     exit;
 }

@@ -75,14 +75,14 @@ if (isset($_POST["send_temoignage"])) {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';  // Gmail, OVH, etc.
                 $mail->SMTPAuth = true;
-                $mail->Username = 'etoiledelouangeuea01@gmail.com';  // ✅ VOTRE EMAIL
-                $mail->Password = 'gkqhahtvfwvwwsyk';  // Mot de passe APP
+                $mail->Username = 'aidesocialeetudiantaisoe@gmail.com';  // ✅ VOTRE EMAIL
+                $mail->Password = 'gnodvykdderghxgo';  // Mot de passe APP
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
                 // Destinataire(s)
-                $mail->setFrom('etoiledelouangeuea01@gmail.com', 'Etoile de Louange UEA');  // ✅ VOTRE EMAIL
-                $mail->addAddress('celestinrushigiradonnie@gmail.com');  // ✅ VOTRE EMAIL ADMIN
+                $mail->setFrom('aidesocialeetudiantaisoe@gmail.com', 'Aide Sociale Étudiants');  // ✅ VOTRE EMAIL
+                $mail->addAddress('aidesocialeetudiantaisoe@gmail.com');  // ✅ VOTRE EMAIL ADMIN
 
                 // Contenu email
                 $mail->isHTML(true);
@@ -221,7 +221,9 @@ if (isset($_POST['register'])) {
             $prenom = $userdata['prenom'];
             $email = $userdata['email'];
             $fonction = $userdata['fonction'];
+            $adress = $userdata['adress'];
             $profile = $userdata['photo'];
+            $telephone = $userdata['telephone'];
 
             $_SESSION['auth_user'] = [
                 'id' => $user_id,
@@ -230,12 +232,15 @@ if (isset($_POST['register'])) {
                 'prenom' => $prenom,
                 'email' => $email,
                 'photo' => $profile,
-                'fonction' => $fonction
+                'fonction' => $fonction,
+                'adress' => $adress,
+                'telephone'=> $telephone
             ];
 
 
 
             $_SESSION['message'] = "Bienvenue Admin";
+            $_SESSION['msg_type'] = "success";
             header("Location: admin/index");
             exit;
         } else {

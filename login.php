@@ -42,7 +42,7 @@ session_start();
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
               class="bi bi-facebook"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href="https://www.youtube.com/@etoiledelouangeUEA" target="_blank"><i class="bi bi-youtube"></i></a>
+            href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.tiktok.com/@user74277859514977" target="_blank"><i
               class="bi bi-tiktok"></i></a>
           <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
@@ -136,7 +136,10 @@ session_start();
                     <button type="submit" name="login" class="btn btn-danger btn-block">Login</button>
                   </div>
                   <div class="mt-3 text-center">
-                    <i class="bi bi-person"></i> <span> Avez oublié votre mot de passe? <a href="forget">Cliquez ici</a></span>
+                    <i class="bi bi-person"></i> <span> Vous n'avez pas un compte ? <a href="register">Cliquez ici</a></span>
+                  </div>
+                  <div class="mt-3 text-center">
+                    <i class="bi bi-person"></i> <span> Avez vous oublié votre mot de passe? <a href="forget">Cliquez ici</a></span>
                   </div>
                 </form>
               </div>
@@ -163,7 +166,7 @@ session_start();
           <div class="social-links d-flex mt-4">
             <a href="https://www.facebook.com/profile.php?id=61572712465423" target="_blank"><i
                 class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-youtube"></i></a>
+            <a href="https://www.youtube.com/@Aidesociale%C3%A9tudiantAISOE" target="_blank"><i class="bi bi-youtube"></i></a>
             <a href="https://www.tiktok.com/@user74277859514977" target="_blank"><i class="bi bi-tiktok"></i></a>
             <a href="https://www.linkedin.com/in/aide-sociale-%C3%A9tudiant-aisoe-a4164039b/?isSelfProfile=false"
               target="_blank"><i class="bi bi-linkedin"></i></a>
